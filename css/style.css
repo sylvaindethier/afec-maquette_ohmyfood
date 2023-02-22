@@ -1,13 +1,72 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Shrikhand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&family=Shrikhand&display=swap");
 * {
   font-family: "Roboto", sans-serif;
 }
-.font--title {
+.font-title {
   font-family: "Shrikhand", cursive;
 }
 
+:root {
+  --color-black: #101010;
+  --color-black-light: #353535;
+
+  --color-grey: #7e7e7e;
+
+  --color-white: #fafafa;
+  --color-white-darker: #eaeaea;
+
+  --color-primary: #9356dc; /* rgb(147, 86, 220) */
+  --color-primary-light: #ff79da;
+  --color-primary-lighter: #f5edff;
+
+  --color-valid: #99e2d0;
+  --color-valid-dark: #008766;
+}
+
+.background-gradient {
+  background-color: var(--color-primary);
+  background-image: linear-gradient(transparent, var(--color-primary-light));
+}
+
+/********** HEADER & LOGO **********/
+.header {
+  /* offset-x: 0 | offset-y: 4px | blur-radius: 4px | spread-radius: 0 | color: black w/ 0.25 opacity */
+  box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
+  /* provide bottom space to match offset-y */
+  margin-bottom: 0.25rem;
+}
 /* default logo color */
 .logo {
-  --logo--fill: #101010;
-  color: #101010;
+  --logo--fill: var(--color-black);
+  color: var(--color-black);
 }
+
+/********** LOCATION **********/
+.location {
+  background-color: var(--color-white-darker);
+}
+
+/********** DISCOVER **********/
+.discover {
+  background-color: var(--color-white);
+}
+.discover__link {
+  --height: 3.25em;
+  --height-half: calc(var(--height) / 2);
+  /* display flex but inline, no block */
+  display: inline-flex;
+  height: var(--height);
+  /* make border round perfect */
+  border-radius: var(--height-half) / 50%;
+
+  background-color: var(--color-primary);
+  background-image: linear-gradient(transparent, var(--color-primary-light));
+  color: white;
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.25);
+}
+.discover__link:hover {
+  transition: 0.5s;
+  transform: scale(1.05);
+  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.5);
+}
+

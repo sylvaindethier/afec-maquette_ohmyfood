@@ -20,5 +20,102 @@ nav ul {
   padding: 0;
   list-style-type: none;
 }
+/* remove `text-decoration` and `color` for all links */
+a {
+  text-decoration: none;
+  color: unset;
+}
+/* restore hover text-decoration; best practice  for footer__link */
+a.footer__link:hover {
+  text-decoration: underline;
+}
 
-.logotext
+/*****************************/
+/********** UTILITY **********/
+/*****************************/
+.text-center {
+  text-align: center;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+/********** CONTAINER **********/
+.container {
+  /* horizontal center */
+  margin: 0 auto;
+
+  --container_min-width: 320px;
+  --container_max-width: 1600px;
+  /* width to 100% or max-width */
+  width: 100%;
+  /* !!! DOES NOT PASS CSS VALIDATION !!! */
+  /* width: min(100%, var(--container_max-width)); */
+  width: min(100%, 320px);
+  min-width: var(--container_min-width);
+  max-width: var(--container_max-width);
+  /* calculate width w/ minimum, preferred, or max */
+  /* !!! DOES NOT PASS CSS VALIDATION !!! */
+  /* width: clamp(var(--container_min-width), 100%, var(--container_max-width)); */
+  width: clamp(320px, 100%, 1600px);
+
+  --container_padding-h: 20px;
+  --container_padding-h: 1.25rem;
+  /* inner horizontal space around */
+  padding: 0 var(--container_padding-h);
+}
+
+/********** HEADER & LOGO **********/
+.header {
+  /* vertical space around */
+  padding: 1em 0;
+}
+.logo.container {
+  line-height: 0;
+}
+
+/********** LOCATION **********/
+.location {
+  /* vertical space around */
+  padding: 1.25em 0;
+}
+.location__title {
+  font-size: 1em;
+  font-weight: normal;
+}
+.location__title .icon {
+  margin-right: 1em;
+}
+
+/********** DISCOVER **********/
+.discover .container {
+  padding: 3em 2em;
+}
+.discover__title {
+  margin: 0 1em;
+}
+.discover__text {
+  margin: 1.5rem 0;
+  font-size: 1.125rem;
+  font-weight: lighter;
+}
+.discover__link {
+  padding: 1em 2em;
+}
+
+/********** WALKTHROUGH **********/
+.walkthrough {
+  padding: 3.25em 0;
+}
+.walkthrough__title {
+  margin: 0;
+}
+.walkthrough__list {
+  margin: 2em auto 0;
+  padding-left: 1em;
+}
+.walkthrough__item {
+}
