@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing BEM with W3C HTML Validator</title>
+</head>
+
+<body>
+  <div class="block__element--modifier">
+    This DIV is W3C valid
+  </div>
+  <!--
+    This COMMENT trigger a !!!warning!!! due to two consecutive hyphens
+    <div class="block__element--modifier">
+      This DIV is W3C valid
+    </div>
+  -->
+
+  <!-- Proposed BEM nomenclature 1 -->
+  <div class="block_element__modifier">
+    This DIV is W3C valid
+  </div>
+  <!--
+    This COMMENT does NOT trigger any warning
+    <div class="block_element__modifier">
+      This DIV is W3C valid
+    </div>
+  -->
+
+  <!-- Proposed BEM nomenclature 2 -->
+  <div class="block__element-modifier">
+    This DIV is W3C valid
+  </div>
+  <!--
+    This COMMENT does NOT trigger any warning
+    <div class="block__element-modifier">
+      This DIV is W3C valid
+    </div>
+  -->
+</body>
+
+</html>
