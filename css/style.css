@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Shrikhand&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+}
+.font--title {
+  font-family: "Shrikhand", cursive;
+}
+
+/* default logo color */
+.logo {
+  --logo--fill: #101010;
+  color: #101010;
+}

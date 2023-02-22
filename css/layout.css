@@ -1,0 +1,24 @@
+/***************************/
+/********** RESET **********/
+/***************************/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+/* reset default browser margin on <figure> */
+figure {
+  margin: 0;
+}
+/* reset default browser margin, padding, & list on <nav><ul> */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.logotext
