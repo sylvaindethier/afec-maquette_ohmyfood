@@ -23,18 +23,18 @@
   --color-valid-dark: #008766;
 }
 
-.background-gradient {
-  background-color: var(--color-primary);
-  background-image: linear-gradient(transparent, var(--color-primary-light));
+.__background-gradient {
+  background-color: var(--color-primary-light);
+  background-image: linear-gradient(transparent, var(--color-primary));
+}
+.__box-shadow {
+  /* offset-x: 0 | offset-y: 4px | blur-radius: 4px | spread-radius: 0 | color: black w/ 0.25 opacity */
+  box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.25);
+  /* provide bottom space to match offset-y */
+  margin-bottom: 0.25em;
 }
 
-/********** HEADER & LOGO **********/
-.header {
-  /* offset-x: 0 | offset-y: 4px | blur-radius: 4px | spread-radius: 0 | color: black w/ 0.25 opacity */
-  box-shadow: 0 0.25rem 0.25rem 0 rgba(0, 0, 0, 0.25);
-  /* provide bottom space to match offset-y */
-  margin-bottom: 0.25rem;
-}
+/********** LOGO **********/
 /* default logo color */
 .logo {
   --logo--fill: var(--color-black);
@@ -58,11 +58,7 @@
   height: var(--height);
   /* make border round perfect */
   border-radius: var(--height-half) / 50%;
-
-  background-color: var(--color-primary);
-  background-image: linear-gradient(transparent, var(--color-primary-light));
   color: white;
-  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.25);
 }
 .discover__link:hover {
   transition: 0.5s;
@@ -70,3 +66,31 @@
   box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.5);
 }
 
+/********** WALKTHROUGH **********/
+.walkthrough {
+  background-color: white;
+}
+.walkthrough__item {
+  background-color: var(--color-white);
+  border-radius: 1.5em;
+}
+.walkthrough__item .icon {
+  color: var(--color-grey);
+}
+.walkthrough__item.__highlight,
+.walkthrough__item:hover {
+  background-color: var(--color-primary-lighter);
+}
+.walkthrough__item:hover {
+  box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.5);
+}
+.walkthrough__item.__highlight .icon,
+.walkthrough__item:hover .icon {
+  color: var(--color-primary);
+}
+/********** WALKTHROUGH counter **********/
+.walkthrough__item::before {
+  color: white;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+}
