@@ -42,11 +42,16 @@ a.footer__link:hover {
   align-content: center;
   align-items: center;
 }
+.__title {
+  margin-block: 0;
+}
 
 /********** CONTAINER **********/
 .container {
   /* horizontal center */
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-block: 0;
+  margin-inline: auto;
 
   --container_min-width: 320px;
   --container_max-width: 1600px;
@@ -62,68 +67,97 @@ a.footer__link:hover {
   /* width: clamp(var(--container_min-width), 100%, var(--container_max-width)); */
   width: clamp(320px, 100%, 1600px);
 
-  --container_padding-h: 20px;
-  --container_padding-h: 1.25rem;
+  --container_padding-inline: 1.25rem;
   /* inner horizontal space around */
-  padding: 0 var(--container_padding-h);
+  /* padding: 0 var(--container_padding-inline); */
+  padding-block: 0;
+  padding-inline: var(--container_padding-inline);
 }
 
 /********** HEADER & LOGO **********/
 .header {
   /* vertical space around */
-  padding: 1em 0;
+  /* padding: 1em 0; */
+  padding-block: 1em;
 }
-.logo.container {
+.logo {
   line-height: 0;
 }
 
 /********** LOCATION **********/
 .location {
   /* vertical space around */
-  padding: 1.25em 0;
+  /* padding: 1.25em 0; */
+  padding-block: 1.25em;
 }
 .location__title {
   font-size: 1em;
   font-weight: normal;
 }
 .location__title .icon {
-  margin-right: 1em;
+  /* margin-right: 1em; */
+  margin-inline-end: 1em;
 }
 
 /********** DISCOVER **********/
+.discover__title {
+  /* margin-bottom: 1.5rem; */
+  margin-block-end: 1.5rem;
+}
+
+.discover {
+  /* padding: 3em 0; */
+  padding-block: 3em;
+}
 .discover .container {
-  padding: 3em 2em;
+  /* padding: 0 2em; */
+  padding-inline: 2em;
 }
 .discover__title {
-  margin: 0 1em;
+  font-size: 1.5em;
+  /* margin: 0 1em; */
+  margin-inline: 1em;
 }
 .discover__text {
-  margin: 1.5rem 0;
+  /* margin: 1.5rem 0; */
+  margin-block: 1.5rem;
   font-size: 1.125rem;
   font-weight: lighter;
 }
 .discover__link {
-  padding: 1em 2em;
+  /* padding: 1em 2em; */
+  padding-block: 1em;
+  padding-inline: 2em;
 }
 
 /********** WALKTHROUGH **********/
-.walkthrough {
-  padding: 3.25em 0;
-}
 .walkthrough__title {
-  margin: 0;
+  /* margin-bottom: 2rem; */
+  margin-block-end: 2rem;
+}
+
+.walkthrough {
+  /* padding: 3.25em 0; */
+  padding-block: 3.25em;
 }
 .walkthrough__list {
-  margin: 2em auto 0;
-  padding-left: 1em;
-  /* item flex in column */
+  --gap: 1.5em;
+  /* margin: 0 auto; */
+  margin-block: 0;
+  /* let some space for the counter in ::marker */
+  /* padding-left: 1em; */
+  padding-inline-start: 1em;
+
+  /* flex item in column */
   display: flex;
   flex-direction: column;
   gap: 1.5em;
 }
 .walkthrough__item {
   line-height: 1.5;
-  padding: 2em 2.5em;
+  /* padding: 2em 2.5em; */
+  padding-block: 2em;
+  padding-inline: 2.5em;
 }
 /* align item & content vertically */
 .walkthrough__item,
@@ -145,9 +179,9 @@ a.footer__link:hover {
 .walkthrough__list {
   /* reset list-style to disable ::marker */
   list-style: none;
-  /* and reset left margin & padding */
-  margin-left: 0;
-  padding-left: 0;
+  /* and reset left padding */
+  /* padding-left: 0; */
+  padding-inline-start: 0;
 
   /* not required for styling ::before, counter still works by default in <li> */
   counter-reset: walkthrough-counter;
@@ -171,16 +205,23 @@ a.footer__link:hover {
   --before-left: calc(0px - var(--before-half-width));
   position: relative;
   /* let the space for the ::before element */
-  margin-left: var(--before-half-width);
+  /* margin-left: var(--before-half-width); */
+  margin-inline-start: var(--before-half-width);
 }
 .walkthrough__item::before {
-  /* get the element out of the box */
-  position: absolute;
-  /* left: calc(0px - var(--before-half-width)); */
-  left: var(--before-left);
   /* make it square */
   width: var(--before-width);
   height: var(--before-width);
   line-height: var(--before-width);
   text-align: center;
+
+  /* get the element out of the box */
+  position: absolute;
+  left: var(--before-left);
+}
+
+/********** RESTAURANT **********/
+.res-stack {
+  /* padding: 3.625em 0; */
+  padding-block: 3.625em;
 }
