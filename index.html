@@ -9,13 +9,11 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/a96b215154.js" crossorigin="anonymous"></script>
   <title>Accueil | OhMyFood</title>
 </head>
 
 <body>
-  <header class="header text-center">
+  <header class="header __text-center __box-shadow">
     <!--\\\\\\\\\\ LOGO //////////-->
     <!-- logo as text -->
     <!-- <h1 class="logo container"><span class="logo-text font-title">ohmyfood</span></h1> -->
@@ -24,44 +22,54 @@
     <div class="logo container">
       <img class="logo-img" alt="logo ohmyfood" src="assets/logo@2x.svg">
     </div>
-
-    <!-- !WIP: logo as svg -->
   </header>
 
   <main class="main">
     <!--\\\\\\\\\\ LOCATION //////////-->
-    <section class="location text-center">
-      <h2 class="location__title __title container">
+    <section class="location __text-center">
+      <h2 class="location__title container">
         <i class="icon fa-fw fa-solid fa-location-dot"></i>
-        <span class="location__text __text">Paris, Belleville</span>
+        <span class="location__text">Paris, Belleville</span>
       </h2>
     </section>
 
     <!--\\\\\\\\\\ DISCOVER //////////-->
-    <section class="discover text-center">
+    <section class="discover __text-center">
       <div class="container">
-        <h2 class="discover__title __title">Réservez le menu qui vous convient</h2>
-        <p class="discover__text __text">Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
-        <a class="discover__link __link flex-center" href="#">Explorer nos restaurants</a>
+        <h2 class="discover__title">Réservez le menu qui vous convient</h2>
+        <p class="discover__text">Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
+        <a class="discover__link __flex-center __box-shadow __background-gradient" href="#">Explorer nos restaurants</a>
       </div>
     </section>
 
     <!--\\\\\\\\\\ WALKTHROUGH //////////-->
     <section class="walkthrough">
       <div class="container">
-        <h2 class="walkthrough__title __title">Fonctionnement</h2>
-        <ol class="walkthrough__list __list">
-          <li class="walkthrough__item __item">
-            <i class="icon fa-fw fa-solid fa-mobile-screen-button"></i>
-            <span class="walkthrough__text __text">Choisissez un restaurant</span>
+        <h2 class="walkthrough__title">Fonctionnement</h2>
+        <ol class="walkthrough__list">
+
+          <!-- Step 1 -->
+          <li class="walkthrough__item __box-shadow">
+            <span class="walkthrough__content">
+              <i class="icon fa-fw fa-solid fa-mobile-screen-button"></i>
+              <span class="walkthrough__text">Choisissez un restaurant</span>
+            </span>
           </li>
-          <li class="walkthrough__item __item">
-            <i class="icon fa-fw fa-solid fa-list-ul"></i>
-            <span class="walkthrough__text __text">Composez votre menu</span>
+
+          <!-- Step 2 -->
+          <li class="walkthrough__item __box-shadow">
+            <span class="walkthrough__content">
+              <i class="icon fa-fw fa-solid fa-list-ul"></i>
+              <span class="walkthrough__text">Composez votre menu</span>
+            </span>
           </li>
-          <li class="walkthrough__item __item">
-            <i class="icon fa-fw fa-solid fa-store"></i>
-            <span class="walkthrough__text __text">Dégustez au restaurant</span>
+
+          <!-- Step 3 -->
+          <li class="walkthrough__item __highlight __box-shadow">
+            <span class="walkthrough__content">
+              <i class="icon fa-fw fa-solid fa-store"></i>
+              <span class="walkthrough__text">Dégustez au restaurant</span>
+            </span>
           </li>
         </ol>
       </div>
@@ -178,6 +186,9 @@
       </nav>
     </div>
   </footer>
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a96b215154.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -33,10 +33,10 @@ a.footer__link:hover {
 /*****************************/
 /********** UTILITY **********/
 /*****************************/
-.text-center {
+.__text-center {
   text-align: center;
 }
-.flex-center {
+.__flex-center {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -116,4 +116,71 @@ a.footer__link:hover {
 .walkthrough__list {
   margin: 2em auto 0;
   padding-left: 1em;
+  /* item flex in column */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.walkthrough__item {
+  line-height: 1.5;
+  padding: 2em 2.5em;
+}
+/* align item & content vertically */
+.walkthrough__item,
+.walkthrough__content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+}
+/* all sub item have the same text height */
+.walkthrough__item * {
+  line-height: inherit !important;
+}
+/* space after icon */
+.walkthrough__item .icon {
+  margin-right: 1.25em;
+}
+/********** WALKTHROUGH counter **********/
+.walkthrough__list {
+  /* reset list-style to disable ::marker */
+  list-style: none;
+  /* and reset left margin & padding */
+  margin-left: 0;
+  padding-left: 0;
+
+  /* not required for styling ::before, counter still works by default in <li> */
+  counter-reset: walkthrough-counter;
+}
+.walkthrough__item {
+  counter-increment: walkthrough-counter;
+}
+.walkthrough__item::before {
+  /* display counter as needed */
+  display: inline-block;
+  content: counter(walkthrough-counter);
+
+  /* numeric as tabular value (same size) */
+  font-variant-numeric: tabular-nums;
+}
+/********** WALKTHROUGH counter position **********/
+.walkthrough__item {
+  --before-width: 1.5em;
+  --before-half-width: calc(var(--before-width) / 2);
+  /* ::before will be position to left: 0px - half its width */
+  --before-left: calc(0px - var(--before-half-width));
+  position: relative;
+  /* let the space for the ::before element */
+  margin-left: var(--before-half-width);
+}
+.walkthrough__item::before {
+  /* get the element out of the box */
+  position: absolute;
+  /* left: calc(0px - var(--before-half-width)); */
+  left: var(--before-left);
+  /* make it square */
+  width: var(--before-width);
+  height: var(--before-width);
+  line-height: var(--before-width);
+  text-align: center;
 }
