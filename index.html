@@ -27,10 +27,12 @@
   <main class="main">
     <!--\\\\\\\\\\ LOCATION //////////-->
     <section class="location __text-center">
-      <h2 class="location__title __title container">
-        <i class="icon fa-fw fa-solid fa-location-dot"></i>
-        <span class="location__text">Paris, Belleville</span>
-      </h2>
+      <div class="container">
+        <h2 class="location__title __title">
+          <i class="icon fa-fw fa-solid fa-location-dot"></i>
+          <span class="location__text">Paris, Belleville</span>
+        </h2>
+      </div>
     </section>
 
     <!--\\\\\\\\\\ DISCOVER //////////-->
@@ -38,7 +40,8 @@
       <div class="container">
         <h2 class="discover__title __title">Réservez le menu qui vous convient</h2>
         <p class="discover__text">Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
-        <a class="discover__link __flex-center __box-shadow_hover __background-gradient" href="#">Explorer nos restaurants</a>
+        <a class="discover__link __flex-center __box-shadow_hover __background-gradient" href="#">Explorer nos
+          restaurants</a>
       </div>
     </section>
 
@@ -46,7 +49,7 @@
     <section class="walkthrough">
       <div class="container">
         <h2 class="walkthrough__title __title">Fonctionnement</h2>
-        <ol class="walkthrough__list">
+        <ol class="walkthrough__list __list">
 
           <!-- Step 1 -->
           <li class="walkthrough__item __box-shadow_hover">
@@ -75,99 +78,118 @@
       </div>
     </section>
 
-    <!--\\\\\\\\\\ RESTAURANT-STACK //////////-->
-    <section class="res-stack">
+    <!--\\\\\\\\\\ RESTAURANT //////////-->
+    <section class="restaurant">
       <div class="container">
-        <h2 class="res-stack__title __title">Restaurants</h2>
+        <h2 class="restaurant__title __title">Restaurants</h2>
+        <ul class="restaurant__list __list">
 
-        <!--\\\\\\\\\\ RESTAURANT-ITEM //////////-->
-        <article class="res-stack__item res-item">
-          <a href="/restaurant_la-palette-du-gout.html" class="res-item__link __link">
-            <figure class="res-item__card __card">
-              <img class="res-item__image __image" height="192" alt="image:La palette du goût"
-                src="assets/restaurants/la-palette-du-gout.jpg">
-              <span class="res-item__tag __tag">Nouveau</span>
-              <figcaption class="res-item__desc __desc">
-                <h3 class="res-item__name __name">La palette du goût</h3>
-                <p class="res-item__location __location">Ménilmontant</p>
-              </figcaption>
-            </figure>
-          </a>
-          <div class="res-item__like">
-            <input class="res-item__like__input __input" type="checkbox" id="res-item__like-palette"
-              name="res-item__like-palette">
-            <label class="res-item__like__label __label" for="res-item__like-palette">
-              <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-            </label>
-          </div>
-        </article>
+          <!-- RESTAURANT ITEM -->
+          <li class="restaurant__item">
+            <!--\\\\\\\\\\ RESTAURANT CONTENT CARD #r1 //////////-->
+            <article id="r1" class="restaurant__content restaurant__card __box-shadow_hover">
+              <a class="restaurant__link" href="restaurant/la-palette-du-gout/">
+                <span class="restaurant__tag">Nouveau</span>
+                <figure class="restaurant__figure">
+                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La palette du goût"
+                    src="restaurant/la-palette-du-gout/image.jpg">
+                  <figcaption class="restaurant__desc">
+                    <h3 class="restaurant__name">La palette du goût</h3>
+                    <div class="restaurant__location">Ménilmontant</div>
+                  </figcaption>
+                </figure>
+              </a>
+              <span class="restaurant__like __flex-center">
+                <!-- `<input>` and `<label>` must not appear as descendant of `<a>` -->
+                <input class="restaurant__like__input" id="restaurant__like-r1" name="restaurant__like-r1"
+                  type="checkbox">
+                <label class="restaurant__like__label" for="restaurant__like-r1">
+                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+                  <!--/*//NOSONAR
+                    using 2 icons, the 2nd is over the 1st:
+                    ```html
+                      <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+                      <i class="icon icon-over fa-fw fa-solid fa-heart fa-2x"></i>
+                    ```
+                  */-->
+                </label>
+              </span>
+            </article>
+          </li>
 
-        <!--\\\\\\\\\\ RESTAURANT-ITEM //////////-->
-        <article class="res-stack__item res-item">
-          <a href="/restaurant_la-note-enchantee.html" class="res-item__link __link">
-            <figure class="res-item__card __card">
-              <img class="res-item__image __image" height="192" alt="image:La note enchantée"
-                src="assets/restaurants/la-note-enchantee.jpg">
-              <span class="res-item__tag __tag">Nouveau</span>
-              <figcaption class="res-item__desc __desc">
-                <h3 class="res-item__name __name">La note enchantée</h3>
-                <p class="res-item__location __location">Charonne</p>
-              </figcaption>
-            </figure>
-          </a>
-          <div class="res-item__like">
-            <input class="res-item__like__input __input" type="checkbox" id="res-item__like-note"
-              name="res-item__like-note">
-            <label class="res-item__like__label __label" for="res-item__like-note">
-              <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-            </label>
-          </div>
-        </article>
+          <!-- RESTAURANT ITEM -->
+          <li class="restaurant__item">
+            <!--\\\\\\\\\\ RESTAURANT CONTENT CARD #r2 //////////-->
+            <article id="r2" class="restaurant__content restaurant__card __box-shadow_hover">
+              <a class="restaurant__link" href="restaurant/la-note-enchantee/">
+                <span class="restaurant__tag">Nouveau</span>
+                <figure class="restaurant__figure">
+                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La note enchantée"
+                    src="restaurant/la-note-enchantee/image.jpg">
+                  <figcaption class="restaurant__desc">
+                    <h3 class="restaurant__name">La note enchantée</h3>
+                    <div class="restaurant__location">Charonne</div>
+                  </figcaption>
+                </figure>
+              </a>
+              <span class="restaurant__like __flex-center">
+                <input class="restaurant__like__input" id="restaurant__like-r2" name="restaurant__like-r2"
+                  type="checkbox">
+                <label class="restaurant__like__label" for="restaurant__like-r2">
+                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+                </label>
+              </span>
+            </article>
+          </li>
 
-        <!--\\\\\\\\\\ RESTAURANT-ITEM //////////-->
-        <article class="res-stack__item res-item">
-          <a href="/restaurant_a-la-francaise.html" class="res-item__link __link">
-            <figure class="res-item__card __card">
-              <img class="res-item__image __image" height="192" alt="image:À la française"
-                src="assets/restaurants/a-la-francaise.jpg">
-              <span class="res-item__tag __tag">Nouveau</span>
-              <figcaption class="res-item__desc __desc">
-                <h3 class="res-item__name __name">À la française</h3>
-                <p class="res-item__location __location">Cité Rouge</p>
-              </figcaption>
-            </figure>
-          </a>
-          <div class="res-item__like">
-            <input class="res-item__like__input __input" type="checkbox" id="res-item__like-francaise"
-              name="res-item__like-francaise">
-            <label class="res-item__like__label __label" for="res-item__like-francaise">
-              <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-            </label>
-          </div>
-        </article>
+          <!-- RESTAURANT ITEM -->
+          <li class="restaurant__item">
+            <!--\\\\\\\\\\ RESTAURANT CONTENT #r3 //////////-->
+            <article id="r3" class="restaurant__content restaurant__card __box-shadow_hover">
+              <a class="restaurant__link" href="restaurant/a-la-francaise/">
+                <figure class="restaurant__figure">
+                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:À la française"
+                    src="restaurant/a-la-francaise/image.jpg">
+                  <figcaption class="restaurant__desc">
+                    <h3 class="restaurant__name">À la française</h3>
+                    <div class="restaurant__location">Cité Rouge</div>
+                  </figcaption>
+                </figure>
+              </a>
+              <span class="restaurant__like __flex-center">
+                <input class="restaurant__like__input" id="restaurant__like-r3" name="restaurant__like-r3"
+                  type="checkbox">
+                <label class="restaurant__like__label" for="restaurant__like-r3">
+                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+                </label>
+              </span>
+            </article>
+          </li>
 
-        <!--\\\\\\\\\\ RESTAURANT-ITEM //////////-->
-        <article class="res-stack__item res-item">
-          <a href="/restaurant_le-delice-des-sens.html" class="res-item__link __link">
-            <figure class="res-item__card __card">
-              <img class="res-item__image __image" height="192" alt="image:La délice des sens"
-                src="assets/restaurants/le-delice-des-sens.jpg">
-              <span class="res-item__tag __tag">Nouveau</span>
-              <figcaption class="res-item__desc __desc">
-                <h3 class="res-item__name __name">Le délice des sens</h3>
-                <p class="res-item__location __location">Folie-Méricourt</p>
-              </figcaption>
-            </figure>
-          </a>
-          <div class="res-item__like">
-            <input class="res-item__like__input __input" type="checkbox" id="res-item__like-delice"
-              name="res-item__like-delice">
-            <label class="res-item__like__label __label" for="res-item__like-delice">
-              <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-            </label>
-          </div>
-        </article>
-
+          <!-- RESTAURANT ITEM -->
+          <li class="restaurant__item">
+            <!--\\\\\\\\\\ RESTAURANT CONTENT #r4 //////////-->
+            <article id="r4" class="restaurant__content restaurant__card __box-shadow_hover">
+              <a class="restaurant__link" href="/restaurant/le-delice-des-sens/">
+                <figure class="restaurant__figure">
+                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La délice des sens"
+                    src="restaurant/le-delice-des-sens/image.jpg">
+                  <figcaption class="restaurant__desc">
+                    <h3 class="restaurant__name">Le délice des sens</h3>
+                    <div class="restaurant__location">Folie-Méricourt</div>
+                  </figcaption>
+                </figure>
+              </a>
+              <span class="restaurant__like __flex-center">
+                <input class="restaurant__like__input" id="restaurant__like-r4" name="restaurant__like-r4"
+                  type="checkbox">
+                <label class="restaurant__like__label" for="restaurant__like-r4">
+                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+                </label>
+              </span>
+            </article>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
@@ -175,13 +197,15 @@
   <!--\\\\\\\\\\ FOOTER //////////-->
   <footer class="footer">
     <div class="container">
-      <h4 class="logo-text"><span class="font-title">ohmyfood</span></h4>
+      <h4 class="footer__logo logo-text __title __font-title">ohmyfood</h4>
       <nav class="footer__nav">
-        <ul>
-          <li><a class="footer__link __link" href="#"><i class="icon fa-fw fa-solid fa-utensils"></i> Proposer un restaurant</a></li>
-          <li><a class="footer__link __link" href="#"><i class="icon fa-fw fa-solid fa-handshake"></i> Devenir partenaire</a></li>
-          <li><a class="footer__link __link" href="#">Mentions légales</a></li>
-          <li><a class="footer__link __link" href="#">Contact</a></li>
+        <ul class="footer__list __list">
+          <li><a class="footer__link" href="#"><i class="icon fa-fw fa-solid fa-utensils"></i> Proposer un
+              restaurant</a></li>
+          <li><a class="footer__link" href="#"><i class="icon fa-fw fa-solid fa-handshake"></i> Devenir
+              partenaire</a></li>
+          <li><a class="footer__link" href="#">Mentions légales</a></li>
+          <li><a class="footer__link" href="#">Contact</a></li>
         </ul>
       </nav>
     </div>

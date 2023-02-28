@@ -43,7 +43,28 @@ a.footer__link:hover {
   align-items: center;
 }
 .__title {
+  font-size: 1.5em;
   margin-block: 0;
+  /* margin-bottom: 1.5rem; */
+  /* margin-bottom: 1em; */
+  margin-block-end: 1em;
+}
+.__list {
+  /* margin: 0 auto; */
+  margin-block: 0;
+  /* let some space for the counter in ::marker */
+  /* padding-left: 1em; */
+  padding-inline-start: 1em;
+
+  /* flex item in column */
+  display: flex;
+  flex-direction: column;
+
+  /* reset list-style to disable ::marker */
+  list-style: none;
+  /* and reset left padding */
+  /* padding-left: 0; */
+  padding-inline-start: 0;
 }
 
 /********** CONTAINER **********/
@@ -91,6 +112,7 @@ a.footer__link:hover {
   padding-block: 1.25em;
 }
 .location__title {
+  margin-block: 0;
   font-size: 1em;
   font-weight: normal;
 }
@@ -100,11 +122,6 @@ a.footer__link:hover {
 }
 
 /********** DISCOVER **********/
-.discover__title {
-  /* margin-bottom: 1.5rem; */
-  margin-block-end: 1.5rem;
-}
-
 .discover {
   /* padding: 3em 0; */
   padding-block: 3em;
@@ -114,7 +131,6 @@ a.footer__link:hover {
   padding-inline: 2em;
 }
 .discover__title {
-  font-size: 1.5em;
   /* margin: 0 1em; */
   margin-inline: 1em;
 }
@@ -131,26 +147,15 @@ a.footer__link:hover {
 }
 
 /********** WALKTHROUGH **********/
-.walkthrough__title {
-  /* margin-bottom: 2rem; */
-  margin-block-end: 2rem;
-}
-
 .walkthrough {
   /* padding: 3.25em 0; */
   padding-block: 3.25em;
 }
+.walkthrough__title {
+  /* margin-bottom: 2rem; */
+  margin-block-end: 2rem;
+}
 .walkthrough__list {
-  --gap: 1.5em;
-  /* margin: 0 auto; */
-  margin-block: 0;
-  /* let some space for the counter in ::marker */
-  /* padding-left: 1em; */
-  padding-inline-start: 1em;
-
-  /* flex item in column */
-  display: flex;
-  flex-direction: column;
   gap: 1.5em;
 }
 .walkthrough__item {
@@ -168,8 +173,8 @@ a.footer__link:hover {
   align-items: center;
 }
 /* all sub item have the same text height */
-.walkthrough__item * {
-  line-height: inherit !important;
+.walkthrough__content, .walkthrough__content .icon, .walkthrough__text {
+  line-height: inherit;
 }
 /* space after icon */
 .walkthrough__item .icon {
@@ -177,12 +182,6 @@ a.footer__link:hover {
 }
 /********** WALKTHROUGH counter **********/
 .walkthrough__list {
-  /* reset list-style to disable ::marker */
-  list-style: none;
-  /* and reset left padding */
-  /* padding-left: 0; */
-  padding-inline-start: 0;
-
   /* not required for styling ::before, counter still works by default in <li> */
   counter-reset: walkthrough-counter;
 }
@@ -221,7 +220,125 @@ a.footer__link:hover {
 }
 
 /********** RESTAURANT **********/
-.res-stack {
+.restaurant {
   /* padding: 3.625em 0; */
   padding-block: 3.625em;
+}
+.restaurant__list {
+  gap: 1em;
+}
+.restaurant__card {
+  --desc_padding-block: 1.25em;
+  --desc_padding-inline: 1em;
+  --name_font-size: 1.25rem;
+  --name_margin-block: 0.5rem;
+  --location_font-size: 1em;
+  /* total height for `restaurant_desc` */
+  --desc_height: calc(
+    var(--name_font-size) + var(--name_margin-block) + var(--location_font-size) +
+      (2 * var(--desc_padding-block))
+  );
+}
+.restaurant__image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 11rem;
+}
+.restaurant__desc {
+  line-height: 1;
+  /* padding: 1.25em 1em; */
+  /* padding-block: 1.25em; */
+  padding-block: var(--desc_padding-block);
+  /* padding-inline: 1em; */
+  padding-inline: var(--desc_padding-inline);
+}
+.restaurant__name {
+  font-size: 1.25rem;
+  font-size: var(--name_font-size);
+  margin: 0;
+  padding: 0;
+  /* margin-bottom: 0.5rem; */
+  margin-block-end: 0.5rem;
+}
+.restaurant__location {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}
+/* position restaurant__tag & restaurant__like */
+.restaurant__card {
+  position: relative;
+}
+.restaurant__link,
+.restaurant__tag,
+.restaurant__like {
+  background-color: inherit;
+}
+.restaurant__tag {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-block: var(--desc_padding-block);
+  margin-inline: var(--desc_padding-inline);
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
+.restaurant__like {
+  /* position at bottom right */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* align w/ `restaurant_desc` */
+  margin-block: var(--desc_padding-block);
+  margin-inline: var(--desc_padding-inline);
+  /* same height as `restaurant_desc` - margin-block */
+  /* display: inline-block; */
+  height: calc(var(--desc_height) - (2 * var(--desc_padding-block)));
+}
+.restaurant__like input {
+  display: none;
+}
+.restaurant__like label {
+  cursor: pointer;
+}
+/* put the .icon-over on the left, and reveal when input is checked */
+/* .restaurant__like__label {
+  position: relative;
+}
+.restaurant__like__label .icon-over {
+  position: absolute;
+  left: 0;
+}
+.restaurant__like input + label .icon-over {
+  background: inherit;
+  color: transparent;
+}
+.restaurant__like input + label:hover .icon-over,
+.restaurant__like input:checked + label .icon-over {
+  color: inherit;
+} */
+/* seems like we dont need .icon-over w/ FontAwesome, .fa-solid is `font-weight: bold` */
+.restaurant__like .icon {
+  font-weight: inherit;
+}
+.restaurant__like input + label:hover,
+.restaurant__like input:checked + label {
+  font-weight: bold;
+}
+
+/********** FOOTER **********/
+.footer {
+  padding-block: 1.5em 2.25em;
+}
+.footer__logo {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.footer__list {
+  gap: 0.5em;
+}
+.footer__link .icon {
+  margin-inline-end: 0.75em;
 }
