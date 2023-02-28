@@ -42,11 +42,37 @@ a.footer__link:hover {
   align-content: center;
   align-items: center;
 }
+.__title {
+  font-size: 1.5em;
+  margin-block: 0;
+  /* margin-bottom: 1.5rem; */
+  /* margin-bottom: 1em; */
+  margin-block-end: 1em;
+}
+.__list {
+  /* margin: 0 auto; */
+  margin-block: 0;
+  /* let some space for the counter in ::marker */
+  /* padding-left: 1em; */
+  padding-inline-start: 1em;
+
+  /* flex item in column */
+  display: flex;
+  flex-direction: column;
+
+  /* reset list-style to disable ::marker */
+  list-style: none;
+  /* and reset left padding */
+  /* padding-left: 0; */
+  padding-inline-start: 0;
+}
 
 /********** CONTAINER **********/
 .container {
   /* horizontal center */
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-block: 0;
+  margin-inline: auto;
 
   --container_min-width: 320px;
   --container_max-width: 1600px;
@@ -62,68 +88,81 @@ a.footer__link:hover {
   /* width: clamp(var(--container_min-width), 100%, var(--container_max-width)); */
   width: clamp(320px, 100%, 1600px);
 
-  --container_padding-h: 20px;
-  --container_padding-h: 1.25rem;
+  --container_padding-inline: 1.25rem;
   /* inner horizontal space around */
-  padding: 0 var(--container_padding-h);
+  /* padding: 0 var(--container_padding-inline); */
+  padding-block: 0;
+  padding-inline: var(--container_padding-inline);
 }
 
 /********** HEADER & LOGO **********/
 .header {
   /* vertical space around */
-  padding: 1em 0;
+  /* padding: 1em 0; */
+  padding-block: 1em;
 }
-.logo.container {
+.logo {
   line-height: 0;
 }
 
 /********** LOCATION **********/
 .location {
   /* vertical space around */
-  padding: 1.25em 0;
+  /* padding: 1.25em 0; */
+  padding-block: 1.25em;
 }
 .location__title {
+  margin-block: 0;
   font-size: 1em;
   font-weight: normal;
 }
 .location__title .icon {
-  margin-right: 1em;
+  /* margin-right: 1em; */
+  margin-inline-end: 1em;
 }
 
 /********** DISCOVER **********/
+.discover {
+  /* padding: 3em 0; */
+  padding-block: 3em;
+}
 .discover .container {
-  padding: 3em 2em;
+  /* padding: 0 2em; */
+  padding-inline: 2em;
 }
 .discover__title {
-  margin: 0 1em;
+  /* margin: 0 1em; */
+  margin-inline: 1em;
 }
 .discover__text {
-  margin: 1.5rem 0;
+  /* margin: 1.5rem 0; */
+  margin-block: 1.5rem;
   font-size: 1.125rem;
   font-weight: lighter;
 }
 .discover__link {
-  padding: 1em 2em;
+  /* padding: 1em 2em; */
+  padding-block: 1em;
+  padding-inline: 2em;
 }
 
 /********** WALKTHROUGH **********/
 .walkthrough {
-  padding: 3.25em 0;
+  /* padding: 3.25em 0; */
+  padding-block: 3.25em;
 }
 .walkthrough__title {
-  margin: 0;
+  /* margin-bottom: 2rem; */
+  margin-block-end: 2rem;
 }
 .walkthrough__list {
-  margin: 2em auto 0;
-  padding-left: 1em;
-  /* item flex in column */
-  display: flex;
-  flex-direction: column;
   gap: 1.5em;
 }
 .walkthrough__item {
   line-height: 1.5;
-  padding: 2em 2.5em;
+  /* padding: 2em 2.5em; */
+  padding-block: 2em;
+  padding-inline: 2.5em;
 }
 /* align item & content vertically */
 .walkthrough__item,
@@ -134,8 +173,8 @@ a.footer__link:hover {
   align-items: center;
 }
 /* all sub item have the same text height */
-.walkthrough__item * {
-  line-height: inherit !important;
+.walkthrough__content, .walkthrough__content .icon, .walkthrough__text {
+  line-height: inherit;
 }
 /* space after icon */
 .walkthrough__item .icon {
@@ -143,12 +182,6 @@ a.footer__link:hover {
 }
 /********** WALKTHROUGH counter **********/
 .walkthrough__list {
-  /* reset list-style to disable ::marker */
-  list-style: none;
-  /* and reset left margin & padding */
-  margin-left: 0;
-  padding-left: 0;
-
   /* not required for styling ::before, counter still works by default in <li> */
   counter-reset: walkthrough-counter;
 }
@@ -171,16 +204,141 @@ a.footer__link:hover {
   --before-left: calc(0px - var(--before-half-width));
   position: relative;
   /* let the space for the ::before element */
-  margin-left: var(--before-half-width);
+  /* margin-left: var(--before-half-width); */
+  margin-inline-start: var(--before-half-width);
 }
 .walkthrough__item::before {
-  /* get the element out of the box */
-  position: absolute;
-  /* left: calc(0px - var(--before-half-width)); */
-  left: var(--before-left);
   /* make it square */
   width: var(--before-width);
   height: var(--before-width);
   line-height: var(--before-width);
   text-align: center;
+
+  /* get the element out of the box */
+  position: absolute;
+  left: var(--before-left);
+}
+
+/********** RESTAURANT **********/
+.restaurant {
+  /* padding: 3.625em 0; */
+  padding-block: 3.625em;
+}
+.restaurant__list {
+  gap: 1em;
+}
+.restaurant__card {
+  --desc_padding-block: 1.25em;
+  --desc_padding-inline: 1em;
+  --name_font-size: 1.25rem;
+  --name_margin-block: 0.5rem;
+  --location_font-size: 1em;
+  /* total height for `restaurant_desc` */
+  --desc_height: calc(
+    var(--name_font-size) + var(--name_margin-block) + var(--location_font-size) +
+      (2 * var(--desc_padding-block))
+  );
+}
+.restaurant__image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 11rem;
+}
+.restaurant__desc {
+  line-height: 1;
+  /* padding: 1.25em 1em; */
+  /* padding-block: 1.25em; */
+  padding-block: var(--desc_padding-block);
+  /* padding-inline: 1em; */
+  padding-inline: var(--desc_padding-inline);
+}
+.restaurant__name {
+  font-size: 1.25rem;
+  font-size: var(--name_font-size);
+  margin: 0;
+  padding: 0;
+  /* margin-bottom: 0.5rem; */
+  margin-block-end: 0.5rem;
+}
+.restaurant__location {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}
+/* position restaurant__tag & restaurant__like */
+.restaurant__card {
+  position: relative;
+}
+.restaurant__link,
+.restaurant__tag,
+.restaurant__like {
+  background-color: inherit;
+}
+.restaurant__tag {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-block: var(--desc_padding-block);
+  margin-inline: var(--desc_padding-inline);
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
+.restaurant__like {
+  /* position at bottom right */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* align w/ `restaurant_desc` */
+  margin-block: var(--desc_padding-block);
+  margin-inline: var(--desc_padding-inline);
+  /* same height as `restaurant_desc` - margin-block */
+  /* display: inline-block; */
+  height: calc(var(--desc_height) - (2 * var(--desc_padding-block)));
+}
+.restaurant__like input {
+  display: none;
+}
+.restaurant__like label {
+  cursor: pointer;
+}
+/* put the .icon-over on the left, and reveal when input is checked */
+/* .restaurant__like__label {
+  position: relative;
+}
+.restaurant__like__label .icon-over {
+  position: absolute;
+  left: 0;
+}
+.restaurant__like input + label .icon-over {
+  background: inherit;
+  color: transparent;
+}
+.restaurant__like input + label:hover .icon-over,
+.restaurant__like input:checked + label .icon-over {
+  color: inherit;
+} */
+/* seems like we dont need .icon-over w/ FontAwesome, .fa-solid is `font-weight: bold` */
+.restaurant__like .icon {
+  font-weight: inherit;
+}
+.restaurant__like input + label:hover,
+.restaurant__like input:checked + label {
+  font-weight: bold;
+}
+
+/********** FOOTER **********/
+.footer {
+  padding-block: 1.5em 2.25em;
+}
+.footer__logo {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.footer__list {
+  gap: 0.5em;
+}
+.footer__link .icon {
+  margin-inline-end: 0.75em;
 }

@@ -2,7 +2,7 @@
 * {
   font-family: "Roboto", sans-serif;
 }
-.font-title {
+.__font-title {
   font-family: "Shrikhand", cursive;
 }
 
@@ -15,23 +15,60 @@
   --color-white: #fafafa;
   --color-white-darker: #eaeaea;
 
-  --color-primary: #9356dc; /* rgb(147, 86, 220) */
+  --color-primary: #9356dc;
   --color-primary-light: #ff79da;
   --color-primary-lighter: #f5edff;
 
   --color-valid: #99e2d0;
   --color-valid-dark: #008766;
+
+  --transition-duration: 0.25s;
 }
 
 .__background-gradient {
+  /* primary-light to primary */
   background-color: var(--color-primary-light);
   background-image: linear-gradient(transparent, var(--color-primary));
 }
-.__box-shadow {
-  /* offset-x: 0 | offset-y: 4px | blur-radius: 4px | spread-radius: 0 | color: black w/ 0.25 opacity */
-  box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.25);
-  /* provide bottom space to match offset-y */
-  margin-bottom: 0.25em;
+.__box-shadow,
+.__box-shadow_hover {
+  /* offset-x: 0 | offset-y: 4px | blur-radius: 8px | spread-radius: 0 | color: black w/ 0.25 opacity */
+  box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
+  /* put it on top so it can be visible */
+  position: relative;
+  z-index: 100;
+}
+.__box-shadow_hover:hover {
+  /* transition-duration: 0.1s; */
+  transition-duration: var(--transition-duration);
+  /* offset-x: 0 | offset-y: 4px | blur-radius: 8px | spread-radius: 0 | color: black w/ 0.5 opacity */
+  box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.5);
+}
+.__slide-top {
+  animation: slide-top var(--transition-duration) ease-in-out both;
+}
+@keyframes slide-top {
+  from {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.__slide-left {
+  animation: slide-left var(--transition-duration) ease-in-out both;
+}
+@keyframes slide-left {
+  from {
+    transform: translateX(-3rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /********** LOGO **********/
@@ -53,17 +90,15 @@
 .discover__link {
   --height: 3.25em;
   --height-half: calc(var(--height) / 2);
+  color: white;
   /* display flex but inline, no block */
   display: inline-flex;
   height: var(--height);
   /* make border round perfect */
   border-radius: var(--height-half) / 50%;
-  color: white;
 }
 .discover__link:hover {
-  transition: 0.5s;
   transform: scale(1.05);
-  box-shadow: 0.25em 0.25em 0.5em rgba(0, 0, 0, 0.5);
 }
 
 /********** WALKTHROUGH **********/
@@ -81,9 +116,6 @@
 .walkthrough__item:hover {
   background-color: var(--color-primary-lighter);
 }
-.walkthrough__item:hover {
-  box-shadow: 0 0.25em 0.25em 0 rgba(0, 0, 0, 0.5);
-}
 .walkthrough__item.__highlight .icon,
 .walkthrough__item:hover .icon {
   color: var(--color-primary);
@@ -93,4 +125,48 @@
   color: white;
   background-color: var(--color-primary);
   border-radius: 50%;
+}
+
+/********** RESTAURANT **********/
+.restaurant {
+  background-color: var(--color-white);
+}
+.restaurant__card {
+  background-color: white;
+}
+.restaurant__card,
+.restaurant__image {
+  border-radius: 1.5em;
+}
+.restaurant__image {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.restaurant__tag {
+  color: var(--color-valid-dark);
+  background-color: var(--color-valid);
+  border-radius: 0.25em;
+}
+/* when input:checked label as .__background-gradient */
+.restaurant__like input + label:hover,
+.restaurant__like input:checked + label {
+  /* default color */
+  color: var(--color-primary);
+
+  /* TODO: be DRY: use layer, mixin, whatever */
+  background-color: var(--color-primary-light);
+  background-image: linear-gradient(transparent, var(--color-primary));
+
+  /* use text as background-clip */
+  background-clip: text;
+  color: transparent;
+
+  transition-duration: var(--transition-duration);
+  transition-property: background;
+}
+
+/********** FOOTER **********/
+.footer {
+  color: white;
+  background-color: var(--color-black-light);
 }
