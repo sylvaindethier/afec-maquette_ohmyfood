@@ -36,11 +36,16 @@ a.footer__link:hover {
 .__text-center {
   text-align: center;
 }
+.__flex-center-block,
+.__flex-center {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.__flex-center-inline,
 .__flex-center {
   display: flex;
   justify-content: center;
-  align-content: center;
-  align-items: center;
 }
 .__title {
   font-size: 1.5em;
@@ -52,6 +57,7 @@ a.footer__link:hover {
 .__list {
   /* margin: 0 auto; */
   margin-block: 0;
+
   /* let some space for the counter in ::marker */
   /* padding-left: 1em; */
   padding-inline-start: 1em;
@@ -94,6 +100,12 @@ a.footer__link:hover {
   padding-block: 0;
   padding-inline: var(--container_padding-inline);
 }
+
+/* contain width to 32rem (512px) and center */
+/* .container-small-width {
+  max-width: 32rem;
+  margin: 0 auto;
+} */
 
 /********** HEADER & LOGO **********/
 .header {
@@ -173,7 +185,9 @@ a.footer__link:hover {
   align-items: center;
 }
 /* all sub item have the same text height */
-.walkthrough__content, .walkthrough__content .icon, .walkthrough__text {
+.walkthrough__content,
+.walkthrough__content .icon,
+.walkthrough__text {
   line-height: inherit;
 }
 /* space after icon */
@@ -341,4 +355,43 @@ a.footer__link:hover {
 }
 .footer__link .icon {
   margin-inline-end: 0.75em;
+}
+
+/****************************/
+/********** MOBILE **********/
+/****************************/
+@media (max-width: 768px) {
+  .container {
+    /* contain width to 32rem (512px) and center */
+    max-width: 32rem;
+  }
+}
+
+/****************************/
+/********** TABLET **********/
+/****************************/
+@media (width > 768px) or (width > 48rem) {
+  /********** WALKTHROUGH **********/
+  .walkthrough__list {
+    --nb-items: 3;
+    display: grid;
+    grid-template-columns: repeat(var(--nb-items), 1fr);
+  }
+
+  /********** RESTAURANT **********/
+  .restaurant__list {
+    --columns: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+}
+
+/*****************************/
+/********** DESKTOP **********/
+/*****************************/
+@media (width > 1024px) or (width > 64rem) {
+  /********** RESTAURANT **********/
+  .restaurant__list {
+    --columns: 4;
+  }
 }
