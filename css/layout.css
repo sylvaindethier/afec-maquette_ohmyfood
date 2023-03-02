@@ -30,6 +30,21 @@ a.footer__link:hover {
   text-decoration: underline;
 }
 
+/***************************/
+/********** UNITY **********/
+/***************************/
+/* TODO */
+:root {
+  --title_font-size: 1.5em;
+  --title_margin-block-end: 1em;
+  --list_padding-inline-start: 1em;
+  --container_padding-inline: 1.25rem;
+  --container_max-width-mobile: 32rem;
+  --header_padding-block: 1em;
+  --location_padding-block: 1.25em;
+  --location__title__icon_margin-inline-end: 1em;
+}
+
 /*****************************/
 /********** UTILITY **********/
 /*****************************/
@@ -80,19 +95,21 @@ a.footer__link:hover {
   margin-block: 0;
   margin-inline: auto;
 
-  --container_min-width: 320px;
-  --container_max-width: 1600px;
+  /* --container_min-width: 320px; */
+  /* --container_max-width: 1600px; */
+  --container_min-width: 20rem;
+  --container_max-width: 100rem;
   /* width to 100% or max-width */
   width: 100%;
   /* !!! DOES NOT PASS CSS VALIDATION !!! */
   /* width: min(100%, var(--container_max-width)); */
-  width: min(100%, 320px);
+  width: min(100%, 20rem);
   min-width: var(--container_min-width);
   max-width: var(--container_max-width);
   /* calculate width w/ minimum, preferred, or max */
   /* !!! DOES NOT PASS CSS VALIDATION !!! */
   /* width: clamp(var(--container_min-width), 100%, var(--container_max-width)); */
-  width: clamp(320px, 100%, 1600px);
+  width: clamp(20rem, 100%, 100rem);
 
   --container_padding-inline: 1.25rem;
   /* inner horizontal space around */
@@ -100,12 +117,13 @@ a.footer__link:hover {
   padding-block: 0;
   padding-inline: var(--container_padding-inline);
 }
-
-/* contain width to 32rem (512px) and center */
-/* .container-small-width {
-  max-width: 32rem;
-  margin: 0 auto;
-} */
+/********** CONTAINER for MOBILE **********/
+@media (max-width: 768px) or (max-width: 48rem) {
+  .container {
+    /* contain width to 32rem (512px) */
+    max-width: 32rem;
+  }
+}
 
 /********** HEADER & LOGO **********/
 .header {
@@ -137,10 +155,6 @@ a.footer__link:hover {
 .discover {
   /* padding: 3em 0; */
   padding-block: 3em;
-}
-.discover .container {
-  /* padding: 0 2em; */
-  padding-inline: 2em;
 }
 .discover__title {
   /* margin: 0 1em; */
@@ -239,7 +253,8 @@ a.footer__link:hover {
   padding-block: 3.625em;
 }
 .restaurant__list {
-  gap: 1em;
+  --gap: 1em;
+  gap: var(--gap);
 }
 .restaurant__card {
   --desc_padding-block: 1.25em;
@@ -358,16 +373,6 @@ a.footer__link:hover {
 }
 
 /****************************/
-/********** MOBILE **********/
-/****************************/
-@media (max-width: 768px) {
-  .container {
-    /* contain width to 32rem (512px) and center */
-    max-width: 32rem;
-  }
-}
-
-/****************************/
 /********** TABLET **********/
 /****************************/
 @media (width > 768px) or (width > 48rem) {
@@ -381,6 +386,7 @@ a.footer__link:hover {
   /********** RESTAURANT **********/
   .restaurant__list {
     --columns: 2;
+    --gap: 1.5em;
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
   }
@@ -393,5 +399,6 @@ a.footer__link:hover {
   /********** RESTAURANT **********/
   .restaurant__list {
     --columns: 4;
+    --gap: 2em;
   }
 }
