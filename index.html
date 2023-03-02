@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- stylesheet -->
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/style.css">
 
@@ -13,11 +12,18 @@
 </head>
 
 <body>
+  <!--\\\\\\\\\\ LOADER //////////-->
+  <div class="loader __flex-center __font-title">
+    <svg class="loader__logo-svg">
+      <use xlink:href="assets/logo-configurable.svg#logo"></use>
+    </svg>
+  </div>
+
   <header class="header __text-center __box-shadow">
     <!--\\\\\\\\\\ LOGO //////////-->
     <!-- logo as text -->
     <!--/*//NOSONAR
-      <h1 class="logo container"><span class="logo-text font-title">ohmyfood</span></h1>
+      <h1 class="logo container"><span class="logo-text __font-title">ohmyfood</span></h1>
     */-->
 
     <!-- logo as img  -->
@@ -42,7 +48,7 @@
       <div class="container">
         <h2 class="discover__title __title">Réservez le menu qui vous convient</h2>
         <p class="discover__text">Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
-        <a class="discover__link __flex-center __box-shadow_hover __background-gradient" href="#">Explorer nos
+        <a class="discover__link __box-shadow_hover __background-gradient" href="#">Explorer nos
           restaurants</a>
       </div>
     </section>
@@ -87,7 +93,7 @@
         <ul class="restaurant__list __list">
 
           <!-- RESTAURANT ITEM -->
-          <li class="restaurant__item __item __slide-top">
+          <li class="restaurant__item __item">
             <!--\\\\\\\\\\ RESTAURANT CONTENT CARD #r1 //////////-->
             <article id="r1" class="restaurant__content restaurant__card __box-shadow_hover">
               <a class="restaurant__link" href="restaurant/la-palette-du-gout/">

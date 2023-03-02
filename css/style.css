@@ -26,6 +26,8 @@
 }
 
 .__background-gradient {
+  /* default color to white */
+  color: white;
   /* primary-light to primary */
   background-color: var(--color-primary-light);
   background-image: linear-gradient(transparent, var(--color-primary));
@@ -41,7 +43,7 @@
 .__box-shadow_hover:hover {
   /* transition-duration: 0.1s; */
   transition-duration: var(--transition-duration);
-  /* offset-x: 0 | offset-y: 4px | blur-radius: 8px | spread-radius: 0 | color: black w/ 0.5 opacity */
+  /* offset-x: 4px | offset-y: 4px | blur-radius: 8px | spread-radius: 0 | color: black w/ 0.5 opacity */
   box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.5);
 }
 .__slide-top {
@@ -70,12 +72,33 @@
     opacity: 1;
   }
 } */
-
-/********** LOGO **********/
-/* default logo color */
-.logo {
-  --logo--fill: var(--color-black);
-  color: var(--color-black);
+/********** LOADER **********/
+.loader {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--color-valid);
+  animation: loader 3s linear forwards;
+}
+.loader__logo-svg {
+  width: 50%;
+}
+@keyframes loader {
+  from {
+    color: var(--color-primary);
+    opacity: 1;
+    z-index: 1000;
+  }
+  80% {
+    color: var(--color-primary-light);
+    opacity: 1;
+    z-index: 1000;
+  }
+  to {
+    color: var(--color-primary-light);
+    opacity: 0;
+    z-index: -1;
+  }
 }
 
 /********** LOCATION **********/
@@ -88,18 +111,22 @@
   background-color: var(--color-white);
 }
 .discover__link {
-  --height: 3.25em;
+  /* --height: 3.25em; */
+  --padding-block: 1em;
+  --line-height: 1.25em;
+  --height: calc(var(--line-height) + (2 * var(--padding-block)));
   --height-half: calc(var(--height) / 2);
-  color: white;
-  /* display flex but inline, no block */
-  display: inline-flex;
+  /* inline but block to set `height` & `line-height` */
+  display: inline-block;
+  padding-block: var(--padding-block);
+  line-height: var(--line-height);
   height: var(--height);
   /* make border round perfect */
   border-radius: var(--height-half) / 50%;
   transition-duration: var(--transition-duration);
 }
 .discover__link:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 /********** WALKTHROUGH **********/
