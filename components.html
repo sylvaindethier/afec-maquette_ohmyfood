@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- layout -->
+  <link rel="stylesheet" href="/css/common-layout.css">
+  <link rel="stylesheet" href="/css/restaurant-layout.css">
+
+  <!-- style -->
+  <link rel="stylesheet" href="/css/common-style.css">
+  <link rel="stylesheet" href="/css/restaurant-style.css">
+
+  <title>Components | OhMyFood</title>
+
+  <style>
+    /********** RESET **********/
+    .main__container {
+      margin-block-start: unset;
+    }
+
+    .course__card {
+      background-color: unset;
+    }
+
+    .course__desc {
+      background-color: unset;
+    }
+
+    .course__add {
+      color: unset;
+    }
+  </style>
+
+  <!-- <style>
+    /********** DEBUG **********/
+    .course__item {
+      border: 1px solid red;
+    }
+    .course__card {
+      border: 1px solid blue;
+    }
+    .course__desc {
+      border: 1px solid black;
+      background-color: hsl(0, 0%, 90%);
+    }
+    .course__add {
+      border: 1px solid grey;
+    }
+
+    .action__control {
+      border: 1px solid;
+    }
+    .action-has input:checked~.action .action__control,
+    .action__input:checked~.action .action__control {
+      border: 1px solid blue;
+    }
+  </style> -->
+
+  <!-- This solution is not that good
+  <style>
+    /********** CURTAIN W/ FLEX **********/
+    /* open - by default */
+    /* close */
+    .course__desc.close {
+      flex-shrink: 0;
+    }
+    .course__desc.close + .course__add {
+      display: none;
+    }
+    /* hover - close by default */
+    .course__card.__hover .course__desc {
+      flex-shrink: 0;
+    }
+    .course__card.__hover .course__add {
+      display: none;
+    }
+    /* hover - open on hover */
+    .course__card.__hover:hover .course__desc {
+      flex-shrink: 1;
+    }
+    .course__card.__hover:hover .course__add {
+      display: initial;
+    }
+  </style>
+ -->
+
+  <!-- <style>
+    /********** ACTION **********/
+    .action {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+    }
+
+    /* hack to contain content width w/ `white-space: nowrap;`
+     * @see: https://codepen.io/aj-foster/pen/emBYPW
+     */
+    .action>* {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    /* grow to available space and shrink */
+    .action>* {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+
+    /* unless for action__control */
+    .action .action__control {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    /* action__control & label */
+    .action__control,
+    .action-has label,
+    .action__label {
+      /* stretch to all available space */
+      align-self: stretch;
+      /* flex-center */
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+
+    /* style by default */
+    .action-has input,
+    .action__input {
+      display: none;
+    }
+
+    .action-has label,
+    .action__label {
+      cursor: pointer;
+    }
+
+    .action__control .icon {
+      font-weight: inherit;
+    }
+
+    .action-has input:checked~.action .action__control,
+    .action__input:checked~.action .action__control {
+      font-weight: bold;
+    }
+  </style> -->
+
+  <style>
+    /********** CURTAIN **********/
+    .curtain-has,
+    .curtain-has_hover {
+      --curtain__content-width: 60px;
+      --curtain__content-width_negative: calc(-1 * var(--curtain__content-width));
+    }
+
+    /* make the curtain over and opaque to hide content */
+    .curtain {
+      position: relative;
+      z-index: 10;
+      background-color: white;
+      transition: 0.5s ease-in-out;
+      border: 1px solid currentColor;
+    }
+
+    .curtain__content {
+      width: var(--curtain__content-width);
+    }
+
+    /* unrevealed - when action__input unchecked */
+    .action-has input~.curtain-has .curtain,
+    .action__input~.curtain-has .curtain,
+    .action-has input:not(:checked)~.curtain-has .curtain,
+    .action__input:not(:checked)~.curtain-has .curtain,
+    /* hover unrevealed - by default or when action__input unchecked */
+    .action-has input~.curtain-has_hover .curtain,
+    .action__input~.curtain-has_hover .curtain,
+    .action-has input:not(:checked)~.curtain-has_hover .curtain,
+    .action__input:not(:checked)~.curtain-has_hover .curtain {
+      margin-inline-end: var(--curtain__content-width_negative);
+    }
+
+    /* revealed - by default or when action__input checked */
+    .curtain-has .curtain,
+    .action-has input:checked~.curtain-has .curtain,
+    .action__input:checked~.curtain-has .curtain,
+    /* hover revealed - when hover or action__input checked */
+    .action-has input~.curtain-has_hover:hover .curtain,
+    .action__input~.curtain-has_hover:hover .curtain,
+    .action-has input:checked~.curtain-has_hover .curtain,
+    .action__input:checked~.curtain-has_hover .curtain {
+      margin-inline-end: 0;
+    }
+  </style>
+
+  <style>
+    /********** COURSE__CARD **********/
+    /* COURSE__DESC */
+    .course__desc {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      column-gap: 1em;
+    }
+
+    .course__price {
+      align-self: flex-end;
+    }
+
+    /* COURSE__NAME */
+    /* extra; not required */
+    .course__name-title,
+    .course__name-more {
+      display: inline-block;
+      width: 100%;
+    }
+
+    /* contain text w/ ellipsis
+     * & make sure container has overflow hidden */
+    .course__name-title,
+    .course__name-more {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .course__name {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="main main__container" class="--main__container container">
+    <p>WARNING: Always display <code>&lt;input&gt;</code> checkbox</p>
+
+    <!-- RESTAURANT TITLE -->
+    <header class="action-has">
+      <input class="restaurant__like__input" id="restaurant__like-r1" name="restaurant__like-r1"
+        type="checkbox" style="display: revert;">
+      <div class="action">
+        <h1 class="restaurant__name __title __font-title">La palette du goût</h1>
+        <!-- RESTAURANT LIKE -->
+        <label class="action__control restaurant__like__label"
+          for="restaurant__like-r1">
+          <i class="icon fa-regular fa-heart fa-2x"></i>
+        </label>
+      </div>
+    </header>
+
+    <!--\\\\\\\\\\ COURSE //////////-->
+    <div id="course">
+      <!-- STARTERS -->
+      <section class="course__section starters">
+        <ul class="course__list __list">
+
+          <!-- COURSE ITEM -->
+          <li class="action-has">
+            <h1>CURTAIN REVEALED (input:checked) - DEFAULT</h1>
+            <input class="--action__input" id="course__add-r1-sc1-1" name="course__add-r1-sc1-1" type="checkbox" checked
+              style="display: revert;">
+            <article id="r1-sc1-1" class="action curtain-has __ course__card">
+              <div class="curtain __ course__desc">
+                <div class="course__name">
+                  <!-- <h3 class="course__name-title __title-block">Fricassée d'escargots</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette</h4> -->
+
+                  <h3 class="course__name-title __title-block">Fricassée d'escargots -- 5x blah blah blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette -- 5x blah blah blah
+                    blah blah</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!-- COURSE ADD -->
+              <label class="--action__label action__control curtain__content" for="course__add-r1-sc1-1">
+                <i class="icon fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE ITEM -->
+          <li class="action-has">
+            <h1>CURTAIN UNREVEALED (input unchecked)</h1>
+            <input class="action__input" id="course__add-r1-sc1-2" name="course__add-r1-sc1-2" type="checkbox"
+              style="display: revert;">
+            <article id="r1-sc1-2" class="action curtain-has __ course__card">
+              <div class="curtain __ course__desc">
+                <div class="course__name">
+                  <!-- <h3 class="course__name-title __title-block">Fricassée d'escargots</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette</h4> -->
+
+                  <h3 class="course__name-title __title-block">Fricassée d'escargots -- 5x blah blah blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette -- 5x blah blah blah
+                    blah blah</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!-- COURSE ADD -->
+              <label class="action__control action__label curtain__content" for="course__add-r1-sc1-2">
+                <i class="icon fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE ITEM -->
+          <li class="action-has">
+            <h1>CURTAIN HOVER - UNREVEALED by default (input unchecked) - REVEALED on hover & checked</h1>
+            <input class="action__input" id="course__add-r1-sc1-3" name="course__add-r1-sc1-3" type="checkbox"
+              style="display: revert;">
+            <article id="r1-sc1-3" class="action curtain-has_hover __ course__card">
+              <div class="curtain __ course__desc">
+                <div class="course__name">
+                  <!-- <h3 class="course__name-title __title-block">Fricassée d'escargots</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette</h4> -->
+
+                  <h3 class="course__name-title __title-block">Fricassée d'escargots -- 5x blah blah blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette -- 5x blah blah blah
+                    blah blah</h4>
+                </div>
+
+                <div class="course__price"><b>25€</b></div>
+              </div>
+
+              <!-- COURSE ADD -->
+              <label class="action__control action__label curtain__content" for="course__add-r1-sc1-3">
+                <i class="icon fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a96b215154.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

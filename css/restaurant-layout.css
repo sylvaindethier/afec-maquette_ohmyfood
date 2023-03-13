@@ -1,0 +1,176 @@
+/********** CURTAIN **********/
+.curtain-has,
+.curtain-has_hover {
+  --curtain__content-font-size: 1.25rem;
+  --curtain__content-width: calc(3 * var(--curtain__content-font-size));
+  --curtain__content-width_negative: calc(-1 * var(--curtain__content-width));
+}
+/* make the curtain over and opaque to hide content */
+.curtain {
+  position: relative;
+  z-index: 10;
+  background-color: white;
+  transition: 0.5s ease-in-out;
+  border: 1px solid currentColor;
+}
+.curtain__content {
+  width: var(--curtain__content-width);
+  font-size: var(--curtain__content-font-size);
+}
+/* unrevealed - when action__input unchecked */
+.action-has input~.curtain-has .curtain,
+.action__input~.curtain-has .curtain,
+.action-has input:not(:checked)~.curtain-has .curtain,
+.action__input:not(:checked)~.curtain-has .curtain,
+/* hover unrevealed - by default or when action__input unchecked */
+.action-has input~.curtain-has_hover .curtain,
+.action__input~.curtain-has_hover .curtain,
+.action-has input:not(:checked)~.curtain-has_hover .curtain,
+.action__input:not(:checked)~.curtain-has_hover .curtain {
+  margin-inline-end: var(--curtain__content-width_negative);
+}
+/* revealed - by default or when action__input checked */
+.curtain-has .curtain,
+.action-has input:checked~.curtain-has .curtain,
+.action__input:checked~.curtain-has .curtain,
+/* hover revealed - when hover or action__input checked */
+.action-has input~.curtain-has_hover:hover .curtain,
+.action__input~.curtain-has_hover:hover .curtain,
+.action-has input:checked~.curtain-has_hover .curtain,
+.action__input:checked~.curtain-has_hover .curtain {
+  margin-inline-end: 0;
+}
+
+/********** #image **********/
+/* reset padding-inline for full width */
+#image {
+  padding-inline: 0;
+}
+#restaurant__image {
+  display: block;
+  width: 100%;
+  height: 16rem;
+  object-fit: cover;
+}
+
+/********** #main **********/
+/* on top and over image */
+#main {
+  --top: 2.5em;
+  --top-negative: calc(-1 * var(--top));
+  position: relative;
+  padding-block: var(--top);
+  /* margin-top: var(--top-negative); */
+  margin-block-start: var(--top-negative);
+}
+
+/********** restaurant **********/
+#restaurant,
+.restaurant {
+  margin-block-end: 2rem;
+}
+.restaurant__name {
+  margin-block: 0;
+}
+
+
+/********** #course **********/
+/* this cause a terrible mess w/ width & overflow */
+/* #course {
+  display: grid;
+  gap: 2.5em;
+} */
+#course > .course__section {
+  margin-block: 2.5em;
+}
+#course > .course__section:first-child {
+  margin-block-start: 0;
+}
+#course > .course__section:last-child {
+  margin-block-end: 0;
+}
+.course__title {
+  font-size: 1em;
+  font-weight: lighter;
+  text-transform: uppercase;
+}
+#course .__list {
+  gap: 0.75em;
+}
+
+/* .course__desc {
+  --padding: 0.75em;
+  display: inline-block;
+  padding-inline: var(--padding);
+  padding-block: var(--padding);
+} */
+/*///*/
+/* display grid to control width size */
+/* .course__card {
+  display: grid;
+  grid-template-columns: auto max-content;
+  
+  width: 100%;
+}
+.course__add {
+  position: initial;
+} */
+/*///*/
+
+/*///*/
+/* .course__desc {
+  display: grid;
+  grid-template-columns: auto max-content;
+}
+.course__price {
+  align-self: flex-end;
+} */
+/*///*/
+
+/* .course__name {
+  display: inline-block;
+  font-size: 1em;
+}
+.course__name-title {
+  font-size: inherit;
+  margin-block: 0;
+  margin-block-end: 0.5em;
+}
+.course__name-more {
+  font-size: inherit;
+  margin-block: 0;
+} */
+/* hide extra text with ellipsis */
+/* .course__name-more {
+  display: inline-block;
+  overflow: hidden;
+  overflow-inline: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 10em;
+
+  position: relative;
+  width: 100%;
+} */
+/* .course__price {
+  display: inline-block;
+  margin-inline-start: 1em;
+} */
+
+/********** COURSE ADD **********/
+.course__add {
+  /* --font-size: 1.25rem;
+  --min-width: calc(3 * var(--font-size)); */
+  /* display: inline-block; */
+  /* font-size: var(--font-size);
+  padding: var(--font-size);
+  padding-inline: var(--font-size);
+  padding-block: var(--font-size);
+  min-width: calc(3 * var(--font-size)); */
+}
+
+/********** #order **********/
+#order {
+  /* same as #course gap */
+  margin-block-start: 2.5em;
+}

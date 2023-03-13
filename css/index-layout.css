@@ -1,0 +1,210 @@
+/********** #location **********/
+#location {
+  /* vertical space around */
+  /* padding: 1.25em 0; */
+  padding-block: 1.25em;
+}
+#location__title {
+  margin-block: 0;
+  /* font-size: 1em;
+  font-weight: normal; */
+}
+#location__title .icon {
+  /* margin-right: 1em; */
+  margin-inline-end: 1em;
+}
+
+/********** #discover **********/
+#discover {
+  /* padding: 3em 0; */
+  padding-block: 3em;
+}
+#discover__title {
+  /* margin: 0 1em; */
+  margin-inline: 1em;
+}
+#discover__text {
+  /* margin: 1.5rem 0; */
+  margin-block: 1.5rem;
+  font-size: 1.125rem;
+  /* font-weight: lighter; */
+}
+
+/********** #walkthrough **********/
+#walkthrough {
+  /* padding: 3.25em 0; */
+  padding-block: 3.25em;
+}
+#walkthrough__title {
+  /* margin-bottom: 2rem; */
+  margin-block-end: 2rem;
+}
+#walkthrough .__list {
+  gap: 1.5em;
+}
+#walkthrough .step {
+  line-height: 1.5;
+  /* padding: 2em 2.5em; */
+  padding-block: 2em;
+  padding-inline: 2.5em;
+}
+/* align step & step__content vertically */
+#walkthrough .step,
+#walkthrough .step__content {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+/* all sub item have the same text height */
+#walkthrough .step__content,
+#walkthrough .step .icon,
+#walkthrough .step__text {
+  line-height: inherit;
+}
+/* space after icon */
+#walkthrough .step .icon {
+  margin-right: 1.25em;
+}
+/********** #walkthrough counter **********/
+#walkthrough__list {
+  /* not required for styling ::before, counter still works by default in <li> */
+  counter-reset: walkthrough-counter;
+}
+#walkthrough .step {
+  counter-increment: walkthrough-counter;
+}
+#walkthrough .step::before {
+  /* display counter as needed */
+  display: inline-block;
+  content: counter(walkthrough-counter);
+
+  /* numeric as tabular value (same size) */
+  font-variant-numeric: tabular-nums;
+}
+/********** #walkthrough counter position **********/
+#walkthrough .step {
+  --before-width: 1.5em;
+  --before-half-width: calc(var(--before-width) / 2);
+  /* ::before will be position to left: 0px - half its width */
+  --before-left: calc(0px - var(--before-half-width));
+  position: relative;
+  /* let the space for the ::before element */
+  /* margin-left: var(--before-half-width); */
+  margin-inline-start: var(--before-half-width);
+}
+#walkthrough .step::before {
+  /* make it square */
+  width: var(--before-width);
+  height: var(--before-width);
+  line-height: var(--before-width);
+  text-align: center;
+
+  /* get the element out of the box */
+  position: absolute;
+  left: var(--before-left);
+}
+
+/********** RESTAURANT **********/
+#restaurants {
+  /* padding: 3.625em 0; */
+  padding-block: 3.625em;
+}
+#restaurants .__list {
+  --gap: 1em;
+  gap: var(--gap);
+}
+.restaurant__card {
+  --desc_padding-block: 1.25em;
+  --desc_padding-inline: 1em;
+  --name_font-size: 1.25rem;
+  --name_margin-block: 0.5rem;
+  --location_font-size: 1em;
+  /* total height for `restaurant_desc` */
+  --desc_height: calc(
+    var(--name_font-size) + var(--name_margin-block) + var(--location_font-size) +
+      (2 * var(--desc_padding-block))
+  );
+}
+.restaurant__image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 11rem;
+}
+.restaurant__desc {
+  line-height: 1;
+  /* padding: 1.25em 1em; */
+  /* padding-block: 1.25em; */
+  padding-block: var(--desc_padding-block);
+  /* padding-inline: 1em; */
+  padding-inline: var(--desc_padding-inline);
+}
+.restaurant__name {
+  /* font-size: 1.25rem; */
+  font-size: var(--name_font-size);
+  margin: 0;
+  padding: 0;
+  /* margin-block-end: 0.5rem; */
+  margin-block-end: var(--name_margin-block);
+}
+.restaurant__location {
+  font-size: 1em;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}
+/* position restaurant__tag & restaurant__like__label */
+.restaurant__card,
+.restaurant__link {
+  position: relative;
+}
+.restaurant__tag,
+.restaurant .action__control {
+  position: absolute;
+  right: 0;
+  /* align w/ restaurant__desc */
+  margin-block: var(--desc_padding-block);
+  margin-inline: var(--desc_padding-inline);
+}
+.restaurant__tag {
+  top: 0;
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
+.restaurant .action__control {
+  bottom: 0;
+  /* same height as `restaurant_desc` - margin-block */
+  height: calc(var(--desc_height) - (2 * var(--desc_padding-block)));
+}
+
+/****************************/
+/********** TABLET **********/
+/****************************/
+@media (width > 768px) or (width > 48rem) {
+  /********** #walkthrough **********/
+  #walkthrough .__list {
+    --columns: 3;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+
+  /********** RESTAURANT **********/
+  #restaurants .__list {
+    --columns: 2;
+    --gap: 1.5em;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+}
+
+/*****************************/
+/********** DESKTOP **********/
+/*****************************/
+@media (width > 1024px) or (width > 64rem) {
+  /********** RESTAURANT **********/
+  #restaurants .__list {
+    --columns: 4;
+    --gap: 2em;
+  }
+}

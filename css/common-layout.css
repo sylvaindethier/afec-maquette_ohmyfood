@@ -1,0 +1,234 @@
+/***************************/
+/********** RESET **********/
+/***************************/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+/* reset default browser margin on <figure> */
+figure {
+  margin: 0;
+}
+/* reset default browser margin, padding, & list on <nav><ul> */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/******************************/
+/********** MODIFIER **********/
+/******************************/
+.__flex-center,
+.__flex-center-inline,
+.__flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+.__flex-center,
+.__flex-center-block,
+.__flex-align-center {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.__text-center {
+  text-align: center;
+}
+.__width_100p {
+  width: 100%;
+}
+.__lh_0 {
+  line-height: 0;
+}
+.__margin-block_0,
+.__title-block,
+.__title {
+  margin-block: 0;
+}
+.__margin-block-end_1em,
+.__title-block,
+.__title {
+  margin-block-end: 1em;
+}
+.__font-size_1-5rem,
+.__title {
+  /* font-size: 1.5em; */
+  font-size: 1.5rem;
+}
+.__font-weight_normal,
+.__font-normal {
+  font-weight: normal;
+}
+.__font-size_1rem,
+.__font-normal {
+  /* font-size: 1em; */
+  font-size: 1rem;
+}
+.__font-weight_lighter,
+.__font-lighter {
+  font-weight: lighter;
+  font-weight: 100;
+}
+.__link {
+  text-decoration: none;
+  color: unset;
+}
+.__button {
+  /* padding: 1em 2em; */
+  padding-block: 1em;
+  padding-inline: 2em;
+}
+.__list {
+  /* margin: 0 auto; */
+  margin-block: 0;
+
+  /* let some space for the counter in ::marker */
+  /* padding-left: 1em; */
+  padding-inline-start: 1em;
+
+  /* flex item in column */
+  display: flex;
+  flex-direction: column;
+
+  /* reset list-style to disable ::marker */
+  list-style: none;
+  /* and reset left padding */
+  /* padding-left: 0; */
+  padding-inline-start: 0;
+}
+
+/********** .container **********/
+.container {
+  /* horizontal center */
+  /* margin: 0 auto; */
+  margin-block: 0;
+  margin-inline: auto;
+
+  /* --container_min-width: 320px; */
+  /* --container_max-width: 1600px; */
+  --container_min-width: 20rem;
+  --container_max-width: 100rem;
+  /* width to 100% or max-width */
+  width: 100%;
+  /* !!! DOES NOT PASS CSS VALIDATION !!! */
+  /* width: min(100%, var(--container_max-width)); */
+  width: min(100%, 20rem);
+  min-width: var(--container_min-width);
+  max-width: var(--container_max-width);
+  /* calculate width w/ minimum, preferred, or max */
+  /* !!! DOES NOT PASS CSS VALIDATION !!! */
+  /* width: clamp(var(--container_min-width), 100%, var(--container_max-width)); */
+  width: clamp(20rem, 100%, 100rem);
+
+  --container_padding-inline: 1.25rem;
+  /* inner horizontal space around */
+  /* padding: 0 var(--container_padding-inline); */
+  padding-block: 0;
+  padding-inline: var(--container_padding-inline);
+}
+/********** .container for mobile **********/
+@media (max-width: 768px) or (max-width: 48rem) {
+  .container {
+    /* contain width to 32rem (512px) */
+    max-width: 32rem;
+  }
+}
+
+/********** .action **********/
+.action {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.action > * {
+  /* hack to contain content width w/ `white-space: nowrap;`
+     @see: https://codepen.io/aj-foster/pen/emBYPW */
+  min-width: 0;
+  max-width: 100%;
+  /* children grow to available space */
+  flex-grow: 1;
+  /* flex-shrink: 1; */
+  /* flex-shrink: initial; */
+}
+/* unless for action__control */
+.action .action__control {
+  /* keep initial size */
+  /* flex-grow: 0; */
+  flex-grow: initial;
+  flex-shrink: 0;
+  /* stretch to all available space */
+  align-self: stretch;
+  /* flex-center */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+/* style by default */
+.action-has input,
+.action__input {
+  display: none;
+}
+.action-has label,
+.action__label {
+  cursor: pointer;
+}
+.action-has input:checked ~ .action .action__control,
+.action__input:checked ~ .action .action__control {
+  font-weight: bold;
+}
+.action__control .icon {
+  font-weight: inherit;
+}
+
+/********** LOGO **********/
+.logo-text {
+  font-weight: normal;
+}
+
+/********** #header **********/
+#header {
+  /* vertical space around */
+  /* padding: 1em 0; */
+  padding-block: 1em;
+}
+/* position link left in container */
+#header__container {
+  position: relative;
+}
+#header__link {
+  position: absolute;
+  left: 0;
+  margin-left: var(--container_padding-inline);
+  /* margin-inline-start: var(--container_padding-inline); */
+}
+#header__logo-img {
+  /* height: 32px; */
+  height: 2rem;
+}
+
+/********** #footer **********/
+#footer {
+  padding-block: 1.5em 2.25em;
+}
+#footer .__title {
+  font-size: 1.25rem;
+}
+#footer .__list {
+  gap: 0.5em;
+}
+/* restore hover text-decoration (best practice) for footer__link */
+#footer .__link:hover {
+  text-decoration: underline;
+}
+#footer .__link .icon {
+  margin-inline-end: 0.75em;
+}
