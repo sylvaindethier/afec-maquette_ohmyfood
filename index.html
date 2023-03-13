@@ -5,196 +5,346 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/style.css">
 
   <title>Accueil | OhMyFood</title>
+
+  <!-- splash & loader -->
+  <style>
+    :root {
+      --color-black: #101010;
+      --color-black-light: #353535;
+
+      --color-white: #fafafa;
+
+      --color-primary: #9356dc;
+      --color-primary-light: #ff79da;
+
+      --color-valid: #99e2d0;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+    }
+
+    /* flex-center */
+    .__flex-center {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+
+    /********** #splash **********/
+    #splash {
+      /* don't move */
+      position: fixed;
+      /* all available screen space */
+      height: 100vh;
+      width: 100%;
+      /* default color, opaque to hide the page content */
+      background-color: white;
+      /** animation initial state **/
+      z-index: -1;
+      opacity: 0;
+    }
+
+    #splash.show-fade {
+      --show_duration: 3s;
+      --fade_duration: 0.5s;
+      --total_duration: calc(var(--show_duration) + var(--fade_duration));
+      /* duration to % => 3 / (3 + 0.5) = 0.8571 ~ 0.85 */
+      --show_percentage: 0.85;
+
+      --show_percentage-calc: calc(var(--show_duration) / var(--total_duration));
+      --show_duration-calc: calc(var(--total_duration) * var(--show_percentage));
+
+      animation: show-fade var(--total_duration) linear;
+    }
+
+    @keyframes show-fade {
+
+      /* show */
+      from,
+      85% {
+        z-index: 10;
+        opacity: 1;
+      }
+
+      /* fade */
+      to {
+        z-index: 10;
+      }
+    }
+
+    /********** #loader **********/
+    #loader {
+      width: 75%;
+      height: 75%;
+    }
+
+    #loader .loader__content {
+      width: 100%;
+    }
+
+    #loader .loader__svg {
+      width: 100%;
+      height: 100%;
+      line-height: 0;
+      /* aspect ratio from SVG viewBox dimension */
+      aspect-ratio: 196 / 34;
+    }
+
+    /********** STYLE **********/
+    #splash {
+      background-color: var(--color-black);
+      color: var(--color-white);
+    }
+
+    #loader {
+      background-color: var(--color-black-light);
+      /* offset-x | offset-y| blur-radius | spread-radius | color */
+      box-shadow: 0 0 2em 0 var(--color-valid),
+        inset 0 0 0.5em 0 var(--color-black);
+      animation: shadow-shrink 0.5s ease-in infinite alternate;
+    }
+
+    @keyframes shadow-shrink {
+      from {
+        box-shadow: 0 0 0.5em 0 var(--color-primary-light),
+          inset 0 0 2em 0 var(--color-black);
+      }
+    }
+
+    #loader .loader__svg {
+      /** initial state **/
+      color: var(--color-valid);
+      /* gradient primary-light to primary */
+      background-repeat: no-repeat;
+      background-image: linear-gradient(90deg,
+          var(--color-primary-light),
+          var(--color-primary));
+      background-position: right;
+      background-size: 0%;
+
+      /* no delay apply first frame, finish in initial state */
+      animation: bg-progress var(--show_duration) ease-in backwards;
+    }
+
+    @keyframes bg-progress {
+      from {
+        background-size: 100%;
+      }
+      /* from,
+      33% {
+        background-color: transparent;
+      } */
+    }
+
+    #loader .loader__svg-mask {
+      min-height: 20%;
+
+      -webkit-mask: url(/assets/logo-configurable.svg);
+      -webkit-mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-size: contain;
+
+      mask: url(/assets/logo-configurable.svg);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      color: transparent;
+      background-color: var(--color-valid);
+    }
+  </style>
+
+  <!-- layout -->
+  <link rel="stylesheet" href="/css/common-layout.css">
+  <link rel="stylesheet" href="/css/index-layout.css">
+  <!-- style -->
+  <link rel="stylesheet" href="/css/common-style.css">
+  <link rel="stylesheet" href="/css/index-style.css">
 </head>
 
 <body>
   <!--\\\\\\\\\\ LOADER //////////-->
-  <div class="loader __flex-center __font-title">
-    <svg class="loader__logo-svg">
-      <use xlink:href="assets/logo-configurable.svg#logo"></use>
-    </svg>
+  <div id="splash" class="show-fade __flex-center">
+    <div id="loader" class="container __flex-center">
+      <div class="loader__content __flex-center">
+        <svg class="loader__svg loader__svg-mask logo-svg">
+          <use xlink:href="/assets/logo-configurable.svg#logo"></use>
+        </svg>
+      </div>
+    </div>
   </div>
 
-  <header class="header __text-center __box-shadow">
-    <!--\\\\\\\\\\ LOGO //////////-->
-    <!-- logo as text -->
-    <!--/*//NOSONAR
-      <h1 class="logo container"><span class="logo-text __font-title">ohmyfood</span></h1>
-    */-->
-
-    <!-- logo as img  -->
-    <div class="logo container">
-      <img class="logo-img" alt="logo ohmyfood" src="assets/logo@2x.svg">
+  <!--\\\\\\\\\\ HEADER //////////-->
+  <header id="header" class="__box-shadow">
+    <div id="header__container" class="container __flex-center __lh_0">
+      <!--\\\\\\\\\\ LOGO //////////-->
+      <!-- logo as img  -->
+      <img id="header__logo-img" class="logo-img __width_100p" height="32" data-height="2rem" alt=""
+        data-alt="logo:ohmyfood" src="/assets/logo-configurable.svg">
     </div>
   </header>
 
-  <main class="main">
+
+  <main id="main">
     <!--\\\\\\\\\\ LOCATION //////////-->
-    <section class="location __text-center">
+    <section id="location">
       <div class="container">
-        <h2 class="location__title __title">
+        <h2 id="location__title" class="__title __font-normal __text-center">
           <i class="icon fa-fw fa-solid fa-location-dot"></i>
-          <span class="location__text">Paris, Belleville</span>
+          <span id="location__text">Paris, Belleville</span>
         </h2>
       </div>
     </section>
 
     <!--\\\\\\\\\\ DISCOVER //////////-->
-    <section class="discover __text-center">
-      <div class="container">
-        <h2 class="discover__title __title">Réservez le menu qui vous convient</h2>
-        <p class="discover__text">Découvrez des restaurants d'exception, sélectionnés par nos soins.</p>
-        <a class="discover__link __box-shadow_hover __background-gradient" href="#">Explorer nos
+    <section id="discover">
+      <div class="container __text-center">
+        <h2 id="discover__title" class="__title">Réservez le menu qui vous convient</h2>
+        <p id="discover__text" class="__font-lighter">Découvrez des restaurants d'exception, sélectionnés par nos soins.
+        </p>
+        <a id="discover__link" class="__link __button" href="#" title="Explorer nos restaurants">Explorer nos
           restaurants</a>
       </div>
     </section>
 
     <!--\\\\\\\\\\ WALKTHROUGH //////////-->
-    <section class="walkthrough">
+    <section id="walkthrough">
       <div class="container">
-        <h2 class="walkthrough__title __title">Fonctionnement</h2>
-        <ol class="walkthrough__list __list">
+        <h2 id="walkthrough__title" class="__title">Fonctionnement</h2>
+        <ol id="walkthrough__list" class="__list">
 
           <!-- Step 1 -->
-          <li class="walkthrough__item __item __box-shadow_hover">
-            <span class="walkthrough__content">
+          <li class="step __box-shadow_hover">
+            <span class="step__content">
               <i class="icon fa-fw fa-solid fa-mobile-screen-button"></i>
-              <span class="walkthrough__text">Choisissez un restaurant</span>
+              <span class="step__text">Choisissez un restaurant</span>
             </span>
           </li>
 
           <!-- Step 2 -->
-          <li class="walkthrough__item __item __box-shadow_hover">
-            <span class="walkthrough__content">
+          <li class="step __box-shadow_hover">
+            <span class="step__content">
               <i class="icon fa-fw fa-solid fa-list-ul"></i>
-              <span class="walkthrough__text">Composez votre menu</span>
+              <span class="step__text">Composez votre menu</span>
             </span>
           </li>
 
           <!-- Step 3 -->
-          <li class="walkthrough__item __item __box-shadow_hover">
-            <span class="walkthrough__content">
+          <li class="step __box-shadow_hover">
+            <span class="step__content">
               <i class="icon fa-fw fa-solid fa-store"></i>
-              <span class="walkthrough__text">Dégustez au restaurant</span>
+              <span class="step__text">Dégustez au restaurant</span>
             </span>
           </li>
         </ol>
       </div>
     </section>
 
-    <!--\\\\\\\\\\ RESTAURANT //////////-->
-    <section class="restaurant">
+    <!--\\\\\\\\\\ RESTAURANTS //////////-->
+    <section id="restaurants">
       <div class="container">
-        <h2 class="restaurant__title __title">Restaurants</h2>
-        <ul class="restaurant__list __list">
+        <h2 id="restaurants__title" class="__title">Restaurants</h2>
+        <ul id="restaurants__list" class="__list">
 
-          <!-- RESTAURANT ITEM -->
-          <li class="restaurant__item __item">
-            <!--\\\\\\\\\\ RESTAURANT CONTENT CARD #r1 //////////-->
-            <article id="r1" class="restaurant__content restaurant__card __box-shadow_hover">
-              <a class="restaurant__link" href="restaurant/la-palette-du-gout/">
+          <!-- RESTAURANT #r1 -->
+          <li id="r1" class="restaurant action-has __box-shadow_hover">
+            <input class="restaurant__like__input" id="restaurant__like-r1" name="restaurant__like-r1" type="checkbox">
+            <!--\\\\\\\\\\ RESTAURANT CARD //////////-->
+            <article class="restaurant__card action">
+              <a class="restaurant__link __link" href="/restaurant/la-palette-du-gout/" title="La palette du goût">
                 <span class="restaurant__tag">Nouveau</span>
-                <figure class="restaurant__figure">
-                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La palette du goût"
-                    src="restaurant/la-palette-du-gout/image.jpg">
+                <figure>
+                  <img class="restaurant__image __width_100p" height="176" data-height="11rem"
+                    alt="image:La palette du goût" src="/restaurant/la-palette-du-gout/image.jpg">
                   <figcaption class="restaurant__desc">
-                    <h3 class="restaurant__name">La palette du goût</h3>
-                    <div class="restaurant__location">Ménilmontant</div>
+                    <h3 class="restaurant__name __title-block">La palette du goût</h3>
+                    <div class="restaurant__location __font-lighter">Ménilmontant</div>
                   </figcaption>
                 </figure>
               </a>
-              <span class="restaurant__like __flex-center">
-                <!-- `<input>` and `<label>` must not appear as descendant of `<a>` -->
-                <input class="restaurant__like__input" id="restaurant__like-r1" name="restaurant__like-r1"
-                  type="checkbox">
-                <label class="restaurant__like__label" for="restaurant__like-r1">
-                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-                  <!--/*//NOSONAR
-                    using 2 icons, the 2nd is over the 1st:
-                    ```html
-                      <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-                      <i class="icon icon-over fa-fw fa-solid fa-heart fa-2x"></i>
-                    ```
-                  */-->
-                </label>
-              </span>
+              <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+              <!-- `<input>` and `<label>` MUST NOT appear as descendant of `<a>` -->
+              <label class="restaurant__like__label action__control" for="restaurant__like-r1">
+                <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+              </label>
             </article>
           </li>
 
-          <!-- RESTAURANT ITEM -->
-          <li class="restaurant__item __item">
-            <!--\\\\\\\\\\ RESTAURANT CONTENT CARD #r2 //////////-->
-            <article id="r2" class="restaurant__content restaurant__card __box-shadow_hover">
-              <a class="restaurant__link" href="restaurant/la-note-enchantee/">
+
+          <!-- RESTAURANT #r2 -->
+          <li id="r2" class="restaurant action-has __box-shadow_hover">
+            <input class="restaurant__like__input" id="restaurant__like-r2" name="restaurant__like-r2" type="checkbox">
+            <!--\\\\\\\\\\ RESTAURANT CARD //////////-->
+            <article class="restaurant__card action">
+              <a class="restaurant__link __link" href="/restaurant/la-note-enchantee/" title="La note enchantée">
                 <span class="restaurant__tag">Nouveau</span>
-                <figure class="restaurant__figure">
-                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La note enchantée"
-                    src="restaurant/la-note-enchantee/image.jpg">
+                <figure>
+                  <img class="restaurant__image __width_100p" height="176" data-height="11rem"
+                    alt="image:La note enchantée" src="/restaurant/la-note-enchantee/image.jpg">
                   <figcaption class="restaurant__desc">
-                    <h3 class="restaurant__name">La note enchantée</h3>
-                    <div class="restaurant__location">Charonne</div>
+                    <h3 class="restaurant__name __title-block">La note enchantée</h3>
+                    <div class="restaurant__location __font-lighter">Charonne</div>
                   </figcaption>
                 </figure>
               </a>
-              <span class="restaurant__like __flex-center">
-                <input class="restaurant__like__input" id="restaurant__like-r2" name="restaurant__like-r2"
-                  type="checkbox">
-                <label class="restaurant__like__label" for="restaurant__like-r2">
-                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-                </label>
-              </span>
+              <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+              <label class="restaurant__like__label action__control" for="restaurant__like-r2">
+                <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+              </label>
             </article>
           </li>
 
-          <!-- RESTAURANT ITEM -->
-          <li class="restaurant__item __item">
-            <!--\\\\\\\\\\ RESTAURANT CONTENT #r3 //////////-->
-            <article id="r3" class="restaurant__content restaurant__card __box-shadow_hover">
-              <a class="restaurant__link" href="restaurant/a-la-francaise/">
-                <figure class="restaurant__figure">
-                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:À la française"
-                    src="restaurant/a-la-francaise/image.jpg">
+          <!-- RESTAURANT #r3 -->
+          <li id="r3" class="restaurant action-has __box-shadow_hover">
+            <input class="restaurant__like__input" id="restaurant__like-r3" name="restaurant__like-r3" type="checkbox">
+            <!--\\\\\\\\\\ RESTAURANT CARD //////////-->
+            <article class="restaurant__card action">
+              <a class="restaurant__link __link" href="/restaurant/a-la-francaise/" title="À la française">
+                <figure>
+                  <img class="restaurant__image __width_100p" height="176" data-height="11rem"
+                    alt="image:À la française" src="/restaurant/a-la-francaise/image.jpg">
                   <figcaption class="restaurant__desc">
-                    <h3 class="restaurant__name">À la française</h3>
-                    <div class="restaurant__location">Cité Rouge</div>
+                    <h3 class="restaurant__name __title-block">À la française</h3>
+                    <div class="restaurant__location __font-lighter">Cité Rouge</div>
                   </figcaption>
                 </figure>
               </a>
-              <span class="restaurant__like __flex-center">
-                <input class="restaurant__like__input" id="restaurant__like-r3" name="restaurant__like-r3"
-                  type="checkbox">
-                <label class="restaurant__like__label" for="restaurant__like-r3">
-                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-                </label>
-              </span>
+              <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+              <label class="restaurant__like__label action__control" for="restaurant__like-r3">
+                <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+              </label>
             </article>
           </li>
 
-          <!-- RESTAURANT ITEM -->
-          <li class="restaurant__item __item">
-            <!--\\\\\\\\\\ RESTAURANT CONTENT #r4 //////////-->
-            <article id="r4" class="restaurant__content restaurant__card __box-shadow_hover">
-              <a class="restaurant__link" href="/restaurant/le-delice-des-sens/">
-                <figure class="restaurant__figure">
-                  <img class="restaurant__image" height="176" data-height="11rem" alt="image:La délice des sens"
-                    src="restaurant/le-delice-des-sens/image.jpg">
+          <!-- RESTAURANT #r4 -->
+          <li id="r4" class="restaurant action-has __box-shadow_hover">
+            <input class="restaurant__like__input" id="restaurant__like-r4" name="restaurant__like-r4" type="checkbox">
+            <!--\\\\\\\\\\ RESTAURANT CARD //////////-->
+            <article class="restaurant__card action">
+              <a class="restaurant__link __link" href="/restaurant/le-delice-des-sens/" title="Le délice des sens">
+                <figure>
+                  <img class="restaurant__image __width_100p" height="176" data-height="11rem"
+                    alt="image:La délice des sens" src="/restaurant/le-delice-des-sens/image.jpg">
                   <figcaption class="restaurant__desc">
-                    <h3 class="restaurant__name">Le délice des sens</h3>
-                    <div class="restaurant__location">Folie-Méricourt</div>
+                    <h3 class="restaurant__name __title-block">Le délice des sens</h3>
+                    <div class="restaurant__location __font-lighter">Folie-Méricourt</div>
                   </figcaption>
                 </figure>
               </a>
-              <span class="restaurant__like __flex-center">
-                <input class="restaurant__like__input" id="restaurant__like-r4" name="restaurant__like-r4"
-                  type="checkbox">
-                <label class="restaurant__like__label" for="restaurant__like-r4">
-                  <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
-                </label>
-              </span>
+              <!-- RESTAURANT LIKE -->
+              <label class="restaurant__like__label action__control" for="restaurant__like-r4">
+                <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
+              </label>
             </article>
           </li>
         </ul>
@@ -203,17 +353,17 @@
   </main>
 
   <!--\\\\\\\\\\ FOOTER //////////-->
-  <footer class="footer">
+  <footer id="footer">
     <div class="container">
-      <h4 class="footer__logo logo-text __title __font-title">ohmyfood</h4>
-      <nav class="footer__nav">
-        <ul class="footer__list __list">
-          <li><a class="footer__link" href="#"><i class="icon fa-fw fa-solid fa-utensils"></i>Proposer un
+      <h4 class="logo-text __title __font-title">ohmyfood</h4>
+      <nav>
+        <ul class="__list">
+          <li><a class="__link" href="#"><i class="icon fa-fw fa-solid fa-utensils"></i>Proposer un
               restaurant</a></li>
-          <li><a class="footer__link" href="#"><i class="icon fa-fw fa-solid fa-handshake"></i>Devenir
+          <li><a class="__link" href="#"><i class="icon fa-fw fa-solid fa-handshake"></i>Devenir
               partenaire</a></li>
-          <li><a class="footer__link" href="#">Mentions légales</a></li>
-          <li><a class="footer__link" href="#">Contact</a></li>
+          <li><a class="__link" href="#">Mentions légales</a></li>
+          <li><a class="__link" href="#">Contact</a></li>
         </ul>
       </nav>
     </div>
