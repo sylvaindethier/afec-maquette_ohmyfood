@@ -10,8 +10,9 @@
   position: relative;
   z-index: 10;
   background-color: white;
-  transition: 0.5s ease-in-out;
-  border: 1px solid currentColor;
+  transition: var(--transition-duration) ease-in-out;
+  transition-property: margin-right, margin-inline-end;
+  border: 1px solid;
 }
 .curtain__content {
   width: var(--curtain__content-width);
@@ -64,113 +65,93 @@
   margin-block-start: var(--top-negative);
 }
 
-/********** restaurant **********/
-#restaurant,
+/********** .restaurant **********/
 .restaurant {
   margin-block-end: 2rem;
 }
 .restaurant__name {
-  margin-block: 0;
-}
-
-
-/********** #course **********/
-/* this cause a terrible mess w/ width & overflow */
-/* #course {
-  display: grid;
-  gap: 2.5em;
-} */
-#course > .course__section {
-  margin-block: 2.5em;
-}
-#course > .course__section:first-child {
-  margin-block-start: 0;
-}
-#course > .course__section:last-child {
   margin-block-end: 0;
 }
-.course__title {
+
+/********** #courses **********/
+#courses {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+}
+#courses .courses__title {
   font-size: 1em;
   font-weight: lighter;
   text-transform: uppercase;
 }
-#course .__list {
+#courses .__list {
   gap: 0.75em;
 }
 
-/* .course__desc {
+/********** .course **********/
+.course__desc {
   --padding: 0.75em;
   display: inline-block;
   padding-inline: var(--padding);
   padding-block: var(--padding);
-} */
-/*///*/
-/* display grid to control width size */
-/* .course__card {
-  display: grid;
-  grid-template-columns: auto max-content;
-  
-  width: 100%;
-}
-.course__add {
-  position: initial;
-} */
-/*///*/
 
-/*///*/
-/* .course__desc {
-  display: grid;
-  grid-template-columns: auto max-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 1em;
 }
 .course__price {
   align-self: flex-end;
-} */
-/*///*/
-
-/* .course__name {
+  /* align w/ course__name-more, don't know why have to adjust */
+  padding-block-end: 0.25em;
+}
+.course__name {
   display: inline-block;
   font-size: 1em;
+  overflow: hidden;
 }
-.course__name-title {
-  font-size: inherit;
-  margin-block: 0;
-  margin-block-end: 0.5em;
-}
+.course__name-title,
 .course__name-more {
   font-size: inherit;
   margin-block: 0;
-} */
-/* hide extra text with ellipsis */
-/* .course__name-more {
-  display: inline-block;
+  /* contain text w/ ellipsis & make sure container has overflow hidden */
   overflow: hidden;
-  overflow-inline: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  width: 10em;
-
-  position: relative;
-  width: 100%;
-} */
-/* .course__price {
+  text-overflow: ellipsis;
+  /* extra; not required */
   display: inline-block;
-  margin-inline-start: 1em;
-} */
-
-/********** COURSE ADD **********/
-.course__add {
-  /* --font-size: 1.25rem;
-  --min-width: calc(3 * var(--font-size)); */
-  /* display: inline-block; */
-  /* font-size: var(--font-size);
-  padding: var(--font-size);
-  padding-inline: var(--font-size);
-  padding-block: var(--font-size);
-  min-width: calc(3 * var(--font-size)); */
+  width: 100%;
 }
-
+.course__name-title {
+  margin-block-end: 0.5em;
+}
+.course__add__label {
+  font-weight: bold;
+}
 /********** #order **********/
 #order {
   /* same as #course gap */
   margin-block-start: 2.5em;
+}
+
+/****************************/
+/********** TABLET **********/
+/****************************/
+@media (width > 768px) or (width > 48rem) {
+  #main .restaurant, #main #courses, #main #order {
+    /* contain width to 32rem (512px) */
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+}
+
+/*****************************/
+/********** DESKTOP **********/
+/*****************************/
+@media (width > 1024px) or (width > 64rem) {
+  #main .restaurant, #main #courses, #main #order {
+    /* contain width to 48rem (768px) */
+    max-width: 48rem;
+    margin-inline: auto;
+  }
 }
