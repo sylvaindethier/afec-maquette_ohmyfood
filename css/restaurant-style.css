@@ -1,25 +1,21 @@
 .__slide-top {
-  --duration: 0.5s;
-  /* animation: slide-top var(--duration) ease-out forwards;
-  opacity: 0; */
+  --duration: 0.25s;
+  /* no delay apply first frame, finish in initial state */
+  animation: slide-top var(--duration) ease-out backwards;
   /* delay animation for each item (based on --counter) */
   --counter: 1;
   --index: calc(var(--counter) - 1);
   --duration-x-index: calc(var(--duration) * var(--index));
   /* --delay-precede: -0.1s; */
-  --delay-precede: 0.2s;
+  --delay-precede: 0s;
   --delay-calc: calc(var(--duration-x-index) + var(--delay-precede));
-  --delay: max(0s, var(--delay-calc));
+  --delay: max(0s, var(--delay-calc, 0s));
   animation-delay: var(--delay);
 }
 @keyframes slide-top {
   from {
     transform: translateY(2em);
     opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
 /* Until now, we can NOT use counter() in calc() */
@@ -32,6 +28,9 @@
 .__slide-top.i3 {
   --counter: 3;
 }
+.__slide-top.i4 {
+  --counter: 4;
+}
 
 /********** #main **********/
 #main {
@@ -41,13 +40,13 @@
   border-top-right-radius: var(--top);
 }
 
-/********** .course__title **********/
-.course__title {
+/********** .courses__title **********/
+.courses__title {
   display: inline-block;
   /* border-bottom: 3px solid var(--color-valid); */
 }
 /* border like */
-.course__title::after {
+.courses__title::after {
   content: "";
   display: block;
   margin-block-start: 0.5em;
@@ -56,48 +55,45 @@
   background-color: var(--color-valid);
 }
 /* shift left even course title */
-.course__section:nth-child(even) > .course__title {
+.courses__section:nth-child(even) > .courses__title {
   margin-inline-start: 2.25rem;
 }
 
-/********** COURSE **********/
-/* .course__card {
-  background-color: var(--color-valid);
+/********** .course **********/
+.course,
+.course__desc,
+.course__add__label {
+  border: 0 solid;
+  border-radius: 0.75rem;
 }
 .course__desc {
   background-color: white;
-} */
-
-/* .course__item,
-.course__card,
-.course__add {
-  border-radius: 0.75em;
-} */
-/* .course__item {
-  border: 0 solid;
-  border-radius: 0.75rem;
-} */
-/* .course__card {
-  border: 0 solid;
-  border-radius: 0.75rem;
-} */
-/* .course__desc {
-  border: 0 solid;
-  border-style: solid;
-  border-radius: 0.75rem;
+}
+/* remove right border-radius when hover or action__input checked */
+.action-has input~.curtain-has_hover:hover .curtain,
+.action-has input:checked~.curtain-has_hover .curtain {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-} */
-/* .course__add {
-  border: 0 solid;
-  border-radius: 0.75rem;
+}
+.course__add__label {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-} */
-
-
-/********** COURSE ADD **********/
-/* .course__add {
   color: white;
   background-color: var(--color-valid);
-} */
+}
+/* roll the label on hover */
+.curtain-has_hover .course__add__label .icon {
+  transition: transform var(--transition-duration) ease-out;
+  transform: translateX(1em);
+}
+.action-has input~.curtain-has_hover:hover .course__add__label .icon,
+.action-has input:checked~.curtain-has_hover .course__add__label .icon {
+  transform: translateX(0) rotate(-1turn);
+}
+/* grow-fade only icon */
+.action-has input:checked ~ .action .course__add__label {
+  animation: none;
+}
+.action-has input:checked ~ .action .course__add__label .icon {
+  animation: grow-fade var(--transition-duration) linear;
+}

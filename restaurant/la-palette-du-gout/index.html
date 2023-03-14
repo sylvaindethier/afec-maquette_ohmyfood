@@ -34,37 +34,35 @@
 
   <!--\\\\\\\\\\ RESTAURANT IMAGE //////////-->
   <div id="image" class="container">
-    <img id="restaurant__image" class="__width_100p" height="256" data-height="16rem" alt="image: La Palette du goût"
+    <img id="restaurant__image" class="__width_100p" height="256" data-height="16rem" alt="image: La palette du goût"
       src="./image.jpg">
   </div>
 
   <!--\\\\\\\\\\ MAIN //////////-->
   <main id="main" class="container">
     <!--\\\\\\\\\\ RESTAURANT TITLE //////////-->
-    <header id="restaurant" class="restaurant action-has">
-      <input class="restaurant__like__input action__input__" id="restaurant__like-r1" name="restaurant__like-r1"
-        type="checkbox">
+    <header id="r1" class="restaurant action-has">
+      <input class="restaurant__like__input" id="restaurant__like-r1" name="restaurant__like-r1" type="checkbox">
       <div class="action">
-        <h1 class="restaurant__name __title __font-title">La palette du goût</h1>
-        <!-- RESTAURANT LIKE -->
-        <label class="restaurant__like__label action__control action__label__" for="restaurant__like-r1">
-          <i class="icon fa-regular fa-heart fa-2x"></i>
+        <h1 class="restaurant__name __title __title-block __font-title">La palette du goût</h1>
+        <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+        <label class="restaurant__like__label action__control" for="restaurant__like-r1">
+          <i class="icon fa-fw fa-regular fa-heart fa-2x"></i>
         </label>
       </div>
     </header>
 
-    <!--\\\\\\\\\\ COURSE //////////-->
-    <div id="course">
+    <!--\\\\\\\\\\ COURSES //////////-->
+    <div id="courses">
       <!--\\\\\\\\\\ STARTERS //////////-->
-      <section class="course__section starters__">
-        <h2 class="course__title __title-block __font-lighter">Entrées</h2>
-        <ul class="__list course__list__ ">
+      <section class="courses__section starters">
+        <h2 class="courses__title __title-block __font-lighter">Entrées</h2>
+        <ul class="courses__list __list">
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="action-has __box-shadow_hover __slide-top i1 course__item__ __item__">
-            <input class="course__add__input action__input__" id="course__add-r1-sc1" name="course__add-r1-sc1"
-              type="checkbox">
-            <article id="r1-sc1" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-sc1 -->
+          <li id="r1-sc1" class="course action-has __box-shadow_hover __slide-top i1">
+            <input class="course__add__input" id="course__add-r1-sc1" name="course__add-r1-sc1" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Fricassée d'escargots</h3>
@@ -72,18 +70,17 @@
                 </div>
                 <div class="course__price"><b>25€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control curtain__content action__label__" for="course__add-r1-sc1">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-sc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i2">
-            <input class="course__add__input action__input" id="course__add-r1-sc2" name="course__add-r1-sc2"
-              type="checkbox">
-            <article id="r1-sc2" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-sc2 -->
+          <li id="r1-sc2" class="course action-has __box-shadow_hover __slide-top i2">
+            <input class="course__add__input" id="course__add-r1-sc2" name="course__add-r1-sc2" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Foie gras de canard mi-cuit</h3>
@@ -91,29 +88,28 @@
                 </div>
                 <div class="course__price"><b>35€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-sc2">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-sc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i3">
-            <input class="course__add__input action__input" id="course__add-r1-sc3" name="course__add-r1-sc3"
-              type="checkbox">
-            <article id="r1-sc3" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-sc3 -->
+          <li id="r1-sc3" class="course action-has __box-shadow_hover __slide-top i3">
+            <input class="course__add__input" id="course__add-r1-sc3" name="course__add-r1-sc3" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Œuf au plat</h3>
-                  <h4 class="course__name-more  __title-block __font-lighter">Assaisonné à la truffe sur lit de caviar
+                  <h4 class="course__name-more __title-block __font-lighter">Assaisonné à la truffe sur lit de caviar
                   </h4>
                 </div>
                 <div class="course__price"><b>20€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-sc3">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-sc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
@@ -121,15 +117,14 @@
       </section>
 
       <!--\\\\\\\\\\ MAIN COURSES //////////-->
-      <section class="course__section main-courses__">
-        <h2 class="course__title __title-block">Plats</h2>
-        <ul class="course__list __list">
+      <section class="courses__section main-courses">
+        <h2 class="courses__title __title-block">Plats</h2>
+        <ul class="courses__list __list">
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i1">
-            <input class="course__add__input action__input" id="course__add-r1-mc1" name="course__add-r1-mc1"
-              type="checkbox">
-            <article id="r1-mc1" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-mc1 -->
+          <li id="r1-mc1" class="course action-has __box-shadow_hover __slide-top i1">
+            <input class="course__add__input" id="course__add-r1-mc1" name="course__add-r1-mc1" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Filet de bœuf aux herbes</h3>
@@ -137,18 +132,17 @@
                 </div>
                 <div class="course__price"><b>40€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-mc1">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-mc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i2">
-            <input class="course__add__input action__input" id="course__add-r1-mc2" name="course__add-r1-mc2"
-              type="checkbox">
-            <article id="r1-mc2" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-mc2 -->
+          <li id="r1-mc2" class="course action-has __box-shadow_hover __slide-top i2">
+            <input class="course__add__input" id="course__add-r1-mc2" name="course__add-r1-mc2" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Parmentier de queue de bœuf</h3>
@@ -157,28 +151,27 @@
                 </div>
                 <div class="course__price"><b>35€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-mc2">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-mc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i3">
-            <input class="course__add__input action__input" id="course__add-r1-mc3" name="course__add-r1-mc3"
-              type="checkbox">
-            <article id="r1-mc3" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-mc3 -->
+          <li id="r1-mc3" class="course action-has __box-shadow_hover __slide-top i3">
+            <input class="course__add__input" id="course__add-r1-mc3" name="course__add-r1-mc3" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Filet de turbot</h3>
-                  <h4 class="course__name-more  __title-block __font-lighter">Aux agrumes</h4>
+                  <h4 class="course__name-more __title-block __font-lighter">Aux agrumes</h4>
                 </div>
                 <div class="course__price"><b>44€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-sc3">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-mc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
@@ -187,15 +180,14 @@
       </section>
 
       <!--\\\\\\\\\\ DESSERTS //////////-->
-      <section class="course__section desserts__">
-        <h2 class="course__title __title-block">Desserts</h2>
-        <ul class="course__list __list">
+      <section class="courses__section desserts">
+        <h2 class="courses__title __title-block">Desserts</h2>
+        <ul class="courses__list __list">
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i1">
-            <input class="course__add__input action__input" id="course__add-r1-dc1" name="course__add-r1-dc1"
-              type="checkbox">
-            <article id="r1-dc1" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-dc1 -->
+          <li id="r1-dc1" class="course action-has __box-shadow_hover __slide-top i1">
+            <input class="course__add__input" id="course__add-r1-dc1" name="course__add-r1-dc1" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Paris-Brest</h3>
@@ -203,18 +195,17 @@
                 </div>
                 <div class="course__price"><b>18€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-dc1">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-dc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i2">
-            <input class="course__add__input action__input" id="course__add-r1-dc2" name="course__add-r1-dc2"
-              type="checkbox">
-            <article id="r1-dc2" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-dc2 -->
+          <li id="r1-dc2" class="course action-has __box-shadow_hover __slide-top i2">
+            <input class="course__add__input" id="course__add-r1-dc2" name="course__add-r1-dc2" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Macaron au chocolat d'exception</h3>
@@ -222,29 +213,28 @@
                 </div>
                 <div class="course__price"><b>22€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-dc2">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-dc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
 
-          <!--\\\\\\\\\\ COURSE ITEM //////////-->
-          <li class="course__item __item action-has __box-shadow_hover __slide-top i3">
-            <input class="course__add__input action__input" id="course__add-r1-dc3" name="course__add-r1-dc3"
-              type="checkbox">
-            <article id="r1-dc3" class="course__card action curtain-has_hover">
+          <!-- COURSE #r1-dc3 -->
+          <li id="r1-dc3" class="course action-has __box-shadow_hover __slide-top i3">
+            <input class="course__add__input" id="course__add-r1-dc3" name="course__add-r1-dc3" type="checkbox">
+            <article class="course__card action curtain-has_hover">
               <div class="course__desc curtain">
                 <div class="course__name">
                   <h3 class="course__name-title __title-block">Mousse au chocolat</h3>
-                  <h4 class="course__name-more  __title-block __font-lighter">Au piment d'Espelette et à la truffe noire
+                  <h4 class="course__name-more __title-block __font-lighter">Au piment d'Espelette et à la truffe noire
                   </h4>
                 </div>
                 <div class="course__price"><b>23€</b></div>
               </div>
-              <!-- COURSE ADD -->
-              <label class="course__add__label action__control action__label curtain__content" for="course__add-r1-dc3">
-                <i class="icon fa-regular fa-circle-check"></i>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action__control curtain__content" for="course__add-r1-dc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
               </label>
             </article>
           </li>
@@ -252,7 +242,7 @@
       </section>
     </div>
 
-    <!-- ORDER -->
+    <!--\\\\\\\\\\ ORDER //////////-->
     <div id="order" class="__text-center">
       <a class="__link __button order__link__" href="#" title="Commander">Commander</a>
     </div>
