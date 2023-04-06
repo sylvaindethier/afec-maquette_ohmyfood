@@ -13,3 +13,13 @@
 ![Tablet > 768px | 48rem](https://img.shields.io/badge/Tablet-width%20%3E%20768px%20|%2048rem-informational?style=for-the-badge)
 
 ![Desktop width > 1024px | 64rem](https://img.shields.io/badge/Desktop-width%20%3E%201024px%20|%2064rem-informational?style=for-the-badge)
+
+## Features
+
+- HTML & CSS only, no JS
+- CSS Splash Screen with loader
+- CSS Neon style
+- CSS font-size fit
+- CSS configurable SVG
+- CSS Drawer on element
+- Actionnable 'like' and 'add'

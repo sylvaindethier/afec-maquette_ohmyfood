@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Splash Screen - fade in-out - show</title>
+
+  <link rel="stylesheet" href="./splash-screen.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+    }
+
+    #splash {
+      display: grid;
+      place-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!--\\\\\\\\\\ SPLASH SCREEN //////////-->
+  <div id="splash" class="fade-in-out-show">
+    <div style="font-size: 5rem;">Splash Screen content</div>
+  </div>
+
+  <!--\\\\\\\\\\ PAGE CONTENT //////////-->
+  <div style="font-size: 3rem;">Page Content</div>
+</body>
+
+</html>

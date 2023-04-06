@@ -1,52 +1,9 @@
-/********** CURTAIN **********/
-.curtain-has,
-.curtain-has_hover {
-  --curtain__content-font-size: 1.25rem;
-  --curtain__content-width: calc(3 * var(--curtain__content-font-size));
-  --curtain__content-width_negative: calc(-1 * var(--curtain__content-width));
-}
-/* make the curtain over and opaque to hide content */
-.curtain {
-  position: relative;
-  z-index: 10;
-  background-color: white;
-  transition: var(--transition-duration) ease-in-out;
-  transition-property: margin-right, margin-inline-end;
-  border: 1px solid;
-}
-.curtain__content {
-  width: var(--curtain__content-width);
-  font-size: var(--curtain__content-font-size);
-}
-/* unrevealed - when action__input unchecked */
-.action-has input~.curtain-has .curtain,
-.action__input~.curtain-has .curtain,
-.action-has input:not(:checked)~.curtain-has .curtain,
-.action__input:not(:checked)~.curtain-has .curtain,
-/* hover unrevealed - by default or when action__input unchecked */
-.action-has input~.curtain-has_hover .curtain,
-.action__input~.curtain-has_hover .curtain,
-.action-has input:not(:checked)~.curtain-has_hover .curtain,
-.action__input:not(:checked)~.curtain-has_hover .curtain {
-  margin-inline-end: var(--curtain__content-width_negative);
-}
-/* revealed - by default or when action__input checked */
-.curtain-has .curtain,
-.action-has input:checked~.curtain-has .curtain,
-.action__input:checked~.curtain-has .curtain,
-/* hover revealed - when hover or action__input checked */
-.action-has input~.curtain-has_hover:hover .curtain,
-.action__input~.curtain-has_hover:hover .curtain,
-.action-has input:checked~.curtain-has_hover .curtain,
-.action__input:checked~.curtain-has_hover .curtain {
-  margin-inline-end: 0;
-}
-
 /********** #image **********/
 /* reset padding-inline for full width */
 #image {
   padding-inline: 0;
 }
+
 #restaurant__image {
   display: block;
   width: 100%;
@@ -69,6 +26,7 @@
 .restaurant {
   margin-block-end: 2rem;
 }
+
 .restaurant__name {
   margin-block-end: 0;
 }
@@ -77,13 +35,15 @@
 #courses {
   display: flex;
   flex-direction: column;
-  gap: 2.5em;
+  --gap: 2.5em;
+  gap: var(--gap);
 }
-#courses .courses__title {
+
+.courses__title {
   font-size: 1em;
-  font-weight: lighter;
   text-transform: uppercase;
 }
+
 #courses .__list {
   gap: 0.75em;
 }
@@ -100,37 +60,30 @@
   justify-content: space-between;
   column-gap: 1em;
 }
-.course__price {
-  align-self: flex-end;
-  /* align w/ course__name-more, don't know why have to adjust */
-  padding-block-end: 0.25em;
-}
+
 .course__name {
-  display: inline-block;
+  display: inline;
   font-size: 1em;
-  overflow: hidden;
 }
+
+.course__price {
+  display: inline;
+  align-self: flex-end;
+}
+
 .course__name-title,
 .course__name-more {
   font-size: inherit;
   margin-block: 0;
-  /* contain text w/ ellipsis & make sure container has overflow hidden */
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  /* extra; not required */
-  display: inline-block;
-  width: 100%;
 }
+
 .course__name-title {
   margin-block-end: 0.5em;
 }
-.course__add__label {
-  font-weight: bold;
-}
+
 /********** #order **********/
 #order {
-  /* same as #course gap */
+  /* same as #courses gap */
   margin-block-start: 2.5em;
 }
 
@@ -138,10 +91,12 @@
 /********** TABLET **********/
 /****************************/
 @media (width > 768px) or (width > 48rem) {
-  #main .restaurant, #main #courses, #main #order {
-    /* contain width to 32rem (512px) */
-    max-width: 32rem;
-    margin-inline: auto;
+  #courses {
+    width: 100%;
+    --gap: 1em;
+    display: grid;
+    /* prevent grid overflow, see https://css-tricks.com/preventing-a-grid-blowout/ */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -149,9 +104,7 @@
 /********** DESKTOP **********/
 /*****************************/
 @media (width > 1024px) or (width > 64rem) {
-  #main .restaurant, #main #courses, #main #order {
-    /* contain width to 48rem (768px) */
-    max-width: 48rem;
-    margin-inline: auto;
+  #courses {
+    --gap: 2.5em;
   }
 }

@@ -12,24 +12,53 @@
   --delay: max(0s, var(--delay-calc, 0s));
   animation-delay: var(--delay);
 }
+
 @keyframes slide-top {
   from {
     transform: translateY(2em);
     opacity: 0;
   }
 }
+
 /* Until now, we can NOT use counter() in calc() */
 .__slide-top.i1 {
   --counter: 1;
 }
+
 .__slide-top.i2 {
   --counter: 2;
 }
+
 .__slide-top.i3 {
   --counter: 3;
 }
+
 .__slide-top.i4 {
   --counter: 4;
+}
+
+.__slide-top.i5 {
+  --counter: 5;
+}
+
+.__slide-top.i6 {
+  --counter: 6;
+}
+
+.__slide-top.i7 {
+  --counter: 7;
+}
+
+.__slide-top.i8 {
+  --counter: 8;
+}
+
+.__slide-top.i9 {
+  --counter: 9;
+}
+
+.__slide-top.i10 {
+  --counter: 10;
 }
 
 /********** #main **********/
@@ -45,6 +74,7 @@
   display: inline-block;
   /* border-bottom: 3px solid var(--color-valid); */
 }
+
 /* border like */
 .courses__title::after {
   content: "";
@@ -54,46 +84,17 @@
   width: 50%;
   background-color: var(--color-valid);
 }
-/* shift left even course title */
-.courses__section:nth-child(even) > .courses__title {
+
+/* shift left even courses__title */
+.courses__section:nth-child(even)>.courses__title {
   margin-inline-start: 2.25rem;
 }
 
 /********** .course **********/
-.course,
-.course__desc,
-.course__add__label {
-  border: 0 solid;
+.course__card {
   border-radius: 0.75rem;
 }
+
 .course__desc {
   background-color: white;
-}
-/* remove right border-radius when hover or action__input checked */
-.action-has input~.curtain-has_hover:hover .curtain,
-.action-has input:checked~.curtain-has_hover .curtain {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.course__add__label {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  color: white;
-  background-color: var(--color-valid);
-}
-/* roll the label on hover */
-.curtain-has_hover .course__add__label .icon {
-  transition: transform var(--transition-duration) ease-out;
-  transform: translateX(1em);
-}
-.action-has input~.curtain-has_hover:hover .course__add__label .icon,
-.action-has input:checked~.curtain-has_hover .course__add__label .icon {
-  transform: translateX(0) rotate(-1turn);
-}
-/* grow-fade only icon */
-.action-has input:checked ~ .action .course__add__label {
-  animation: none;
-}
-.action-has input:checked ~ .action .course__add__label .icon {
-  animation: grow-fade var(--transition-duration) linear;
 }

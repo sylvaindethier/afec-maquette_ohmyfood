@@ -12,19 +12,24 @@
 #walkthrough {
   background-color: white;
 }
+
 #walkthrough .step {
   background-color: var(--color-white);
   border-radius: 1.5em;
 }
+
 #walkthrough .step .icon {
   color: var(--color-grey);
 }
+
 #walkthrough .step:hover {
   background-color: var(--color-primary-lighter);
 }
+
 #walkthrough .step:hover .icon {
   color: var(--color-primary);
 }
+
 /********** #walkthrough counter **********/
 #walkthrough .step::before {
   color: white;
@@ -36,21 +41,25 @@
 #restaurants {
   background-color: var(--color-white);
 }
+
 .restaurant__card {
   background-color: white;
 }
-.restaurant,
+
 .restaurant__card,
 .restaurant__image {
   border-radius: 1.5em;
 }
+
 .restaurant__image {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
 .restaurant__tag {
   color: var(--color-valid-dark);
   background-color: var(--color-valid);
   border: 0 solid;
   border-radius: 0.25em;
+  box-shadow: 0 0.25em 0.25em 0 rgb(0, 0, 0, 0.5);
 }
