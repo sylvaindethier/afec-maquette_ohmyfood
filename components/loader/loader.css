@@ -1,0 +1,328 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+:root {
+  --color-black: #101010;
+  --color-black-light: #353535;
+  --color-black: hsl(0, 0%, 6%);
+  --color-black-light: hsl(0, 0%, 21%);
+
+  --color-white: #fafafa;
+  --color-white: hsl(0, 0%, 98%);
+
+  --color-primary: #9356dc;
+  --color-primary-light: #ff79da;
+  --color-primary: hsl(267, 66%, 60%);
+  --color-primary-light: hsl(317, 100%, 74%);
+
+  --color-valid: #99e2d0;
+  --color-valid-dark: #008766;
+  --color-valid: hsl(165, 56%, 74%);
+  --color-valid-dark: hsl(165, 100%, 26%);
+}
+
+/********** #splash **********/
+#splash {
+  display: block;
+  /* don't move */
+  position: fixed;
+  /* all available screen space */
+  height: 100vh;
+  /* use dvh length unit for mobile */
+  height: 100dvh;
+  width: 100%;
+  /* default color, opaque to hide the page content */
+  background-color: white;
+  /** animation initial state **/
+  z-index: -1;
+  opacity: 0;
+}
+#splash {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+#splash.show-fade {
+  --show_duration: 3s;
+  --show_delay: 0s;
+  --fade_duration: 0.75s;
+  --total_duration: calc(var(--show_duration) + var(--fade_duration));
+  --show_percentage: calc(var(--show_duration) / var(--total_duration));
+
+  animation: show-fade-over var(--total_duration) linear var(--show_delay);
+}
+@keyframes show-fade-over {
+
+  /* show-over, duration to percentage: 3 / (3 + 0.75) = 0.8 */
+  from,
+  80% {
+    z-index: 10;
+    opacity: 1;
+  }
+
+  /* fade-over */
+  to {
+    z-index: 10;
+  }
+}
+
+/********** #loader **********/
+#loader {
+  /* enforce loader width w/ padding */
+  --width: 80vw;
+  --padding: 5vw;
+  --padding-inline: var(--padding);
+  --padding-block: var(--padding);
+  width: var(--width);
+  padding: var(--padding-block) var(--padding-inline);
+  --width-inner: calc(var(--width) - (2 * var(--padding-inline)));
+  border-radius: var(--padding);
+  /* background-color: var(--color-black-light); */
+  color: var(--color-black);
+}
+
+/********** FONT SIZE STRETCH **********/
+.font-size_stretch__vw {
+  /* default width */
+  --width__vw: 100vw;
+
+  /* apply width - not mandatory; MAGIC NUMBER do the stuff (approx) */
+  display: inline-flex;
+  width: var(--width__vw, 100vw);
+}
+.text__ohmyfood {
+  font-family: "Shrikhand", cursive !important;
+  /* aspect-ratio conform to SVG viewBox */
+  aspect-ratio: 196/34 !important;
+  min-height: 100%;
+}
+.text__ohmyfood.font-size_stretch__vw {
+  /* apply font-size */
+  font-size: var(--font-size__vw) !important;
+
+  /*** MAGIC NUMBER ***/
+  --font-size_grad: 0.1834;
+  --font-size__vw: calc(var(--width__vw) * var(--font-size_grad));
+
+  /***  space-right linear function: f(x) = a*x + b, fix italic last letter overflow-x ***/
+  --space-right: calc((var(--space-right_grad) * var(--font-size__vw)) + var(--space-right_const));
+  padding-right: var(--space-right);
+  /*** MAGIC NUMBER ***/
+  line-height: 0.946;
+  --space-right_grad: 0.06;
+  --space-right_const: 0.1vw;
+
+  /*** space-bottom linear function: f(x) a*x + b, fix under baseline letter overflow-y ***/
+  --space-bottom: calc((var(--space-bottom_grad) * var(--font-size__vw)) + var(--space-bottom_const));
+  padding-bottom: var(--space-bottom);
+  /*** MAGIC NUMBER ***/
+  line-height: 0.907;
+  --space-bottom_grad: 0.03;
+  --space-bottom_const: 0.15vw;
+}
+.font-size_stretch__vw {
+  --width__vw: var(--width-inner, 100vw);
+}
+
+/********** NEON **********/
+/* default */
+.neon {
+  /* offset-x */
+  --neon_offset-x__base: var(--neon_offset-x, 0px);
+  --neon_offset-x__1: calc(1 * var(--neon_offset-x__base));
+  --neon_offset-x__2: calc(2 * var(--neon_offset-x__base));
+  --neon_offset-x__3: calc(4 * var(--neon_offset-x__base));
+  /* offset-y */
+  --neon_offset-y__base: var(--neon_offset-y, 0px);
+  --neon_offset-y__1: calc(1 * var(--neon_offset-y__base));
+  --neon_offset-y__2: calc(2 * var(--neon_offset-y__base));
+  --neon_offset-y__3: calc(4 * var(--neon_offset-y__base));
+
+  /* neon tube light */
+  --neon_blur__lightest_show: 0.1vw;
+  /* neon tube */
+  --neon_blur__lighter_show: 0.25vw;
+  --neon_blur__lighter_diffuse: 5vw;
+  /* neon light */
+  --neon_blur__light_show: .1vw;
+  --neon_blur__light_diffuse: 2vw;
+  /* neon */
+  --neon_blur__pure_show: 1vw;
+  --neon_blur__pure_diffuse: 5vw;
+
+  /* neon color to primary light */
+  /* --color-primary-light: hsl(317, 100%, 74%); */
+  --neon_hue: 317;
+  --neon_saturation: 100%;
+
+  --neon_color__pure_saturation: calc(var(--neon_saturation) - 5%);
+  --neon_color__pure: hsl(var(--neon_hue), var(--neon_color__pure_saturation), 50%);
+  --neon_color__light: hsl(var(--neon_hue), var(--neon_saturation), 60%);
+  --neon_color__lighter: hsl(var(--neon_hue), var(--neon_saturation), 75%);
+  --neon_color__lightest: hsl(var(--neon_hue), var(--neon_saturation), 95%, 0.9);
+}
+/* neon-box */
+.neon-box {
+  box-shadow:
+    /* ---- 0: show neon tube light ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lightest_show) 0 var(--neon_color__lightest),
+    /* ---- 1: diffuse neon tube ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_diffuse) 0 var(--neon_color__lighter),
+    /* ---- 1: show neon tube ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+    var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+    /* ---- 2: show neon light ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    /* ---- 3: diffuse neon light ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+    var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+    var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+    /* ---- 4: show & diffuse neon ---- */
+    var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+    var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+    var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__pure_diffuse) 0 var(--neon_color__pure),
+    /* inset */
+    /* ---- 0: show inset neon tube light ---- */
+    inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lightest_show) 0 var(--neon_color__lightest),
+    /* ---- 1: show inset neon tube ---- */
+    inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+    inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+    /* ---- 2: show inset neon light ---- */
+    inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    inset var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_show) 0 var(--neon_color__light),
+    /* ---- 4: show & diffuse inset neon ---- */
+    inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+    inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+    inset var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__pure_diffuse) 0 var(--neon_color__pure);
+}
+.neon__light-shrink_animation {
+  /* animation: neon__light-shrink_animation 0.75s ease-in infinite alternate; */
+  /* no need to play infinite, 10 times should do the trick */
+  animation: neon__light-shrink_animation 0.75s ease-in 10 alternate;
+}
+@keyframes neon__light-shrink_animation {
+  from {
+    /* neon color to primary */
+    /* --color-primary: hsl(267, 66%, 60%); */
+    --neon_hue: 267;
+    --neon_saturation: 66%;
+
+    --neon_color__pure_saturation: calc(var(--neon_saturation) - 5%);
+    --neon_color__pure: hsl(var(--neon_hue), var(--neon_color__pure_saturation), 50%);
+    --neon_color__light: hsl(var(--neon_hue), var(--neon_saturation), 60%);
+    --neon_color__lighter: hsl(var(--neon_hue), var(--neon_saturation), 75%);
+    --neon_color__lightest: hsl(var(--neon_hue), var(--neon_saturation), 95%, 0.9);
+
+    /** divide diffuse by 5 **/
+    /* neon tube */
+    --neon_blur__lighter_diffuse: 1vw;
+    /* neon light */
+    --neon_blur__light_diffuse: 0.4vw;
+    /* neon */
+    --neon_blur__pure_diffuse: 1vw;
+
+    box-shadow:
+      /* ---- 0: show neon tube light ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lightest_show) 0 var(--neon_color__lightest),
+      /* ---- 1: diffuse neon tube ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_diffuse) 0 var(--neon_color__lighter),
+      /* ---- 1: show neon tube ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+      var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+      /* ---- 2: show neon light ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      /* ---- 3: diffuse neon light ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+      var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+      var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_diffuse) 0 var(--neon_color__light),
+      /* ---- 4: show & diffuse neon ---- */
+      var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+      var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+      var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__pure_diffuse) 0 var(--neon_color__pure),
+      /* inset */
+      /* ---- 0: show inset neon tube light ---- */
+      inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lightest_show) 0 var(--neon_color__lightest),
+      /* ---- 1: show inset neon tube ---- */
+      inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+      inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__lighter_show) 0 var(--neon_color__lighter),
+      /* ---- 2: show inset neon light ---- */
+      inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      inset var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__light_show) 0 var(--neon_color__light),
+      /* ---- 4: show & diffuse inset neon ---- */
+      inset var(--neon_offset-x__1) var(--neon_offset-y__1) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+      inset var(--neon_offset-x__2) var(--neon_offset-y__2) var(--neon_blur__pure_show) 0 var(--neon_color__pure),
+      inset var(--neon_offset-x__3) var(--neon_offset-y__3) var(--neon_blur__pure_diffuse) 0 var(--neon_color__pure);
+  }
+}
+
+/********** LOGO progress **********/
+#loader .logo {
+  color: var(--color-valid);
+
+  background-image: linear-gradient(to bottom, var(--color-valid), var(--color-valid-dark));
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 0%;
+
+  animation: bg-progress var(--show_duration) both;
+}
+
+@keyframes bg-progress {
+  0% {
+    background-size: 0%;
+  }
+
+  20% {
+    background-size: 10%;
+  }
+
+  25%, 35% {
+    background-size: 30%;
+  }
+
+  43% {
+    background-size: 41%;
+  }
+
+  56% {
+    background-size: 50%;
+  }
+
+  66% {
+    background-size: 52%;
+  }
+
+  71% {
+    background-size: 60%;
+  }
+
+  75% {
+    background-size: 76%;
+
+  }
+
+  94% {
+    background-size: 86%;
+  }
+
+  100% {
+    background-size: 100%;
+  }
+}

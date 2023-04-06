@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- layout -->
+  <link rel="stylesheet" href="../css/_layout.css">
+  <link rel="stylesheet" href="../css/index-layout.css">
+  <link rel="stylesheet" href="../css/restaurant-layout.css">
+
+  <!-- style -->
+  <link rel="stylesheet" href="../css/_style.css">
+  <link rel="stylesheet" href="../css/index-style.css">
+  <link rel="stylesheet" href="../css/restaurant-style.css">
+
+  <title>Components | OhMyFood</title>
+
+  <style>
+    /********** RESET **********/
+    #main {
+      position: initial;
+      padding-block: unset;
+      margin-block-start: unset;
+      /* background-color: unset; */
+      /* border: none; */
+      border-radius: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main id="main" class="container">
+    <h1>!!! WARNING !!!: On this page <code>&lt;input&gt;</code> checkbox are always displayed.</h1>
+
+    <h2>index page Components</h2>
+    <!--\\\\\\\\\\ RESTAURANTS //////////-->
+    <section id="restaurants">
+      <h2 id="restaurants__title" class="__title">Restaurants</h2>
+      <ul id="restaurants__list" class="__list">
+
+        <!-- RESTAURANT #r1 -->
+        <li id="r1" class="restaurant">
+          <input class="restaurant__like__input action__input" id="restaurant__like-r1" name="restaurant__like-r1"
+            type="checkbox" style="display: revert;">
+          <!--\\\\\\\\\\ RESTAURANT CARD //////////-->
+          <article class="restaurant__card __box-shadow_hover action-has">
+            <a class="restaurant__link __link" href="../restaurant/la-palette-du-gout/" title="La palette du goût">
+              <span class="restaurant__tag">Nouveau</span>
+              <img class="restaurant__image __width_100p__" height="176" data-height="11rem"
+                alt="image:La palette du goût" src="../restaurant/la-palette-du-gout/image.jpg">
+              <footer class="restaurant__desc action-flex">
+                <div class="action-flex_required">
+                  <h3 class="restaurant__name __title-block">La palette du goût</h3>
+                  <div class="restaurant__location __font-lighter">Ménilmontant</div>
+                </div>
+                <!-- `<label>` MUST NOT appear as descendant of `<a>`, fake action to position & behave normally -->
+                <span class="action action-fake">
+                  <i class="icon action-like fa-fw fa-regular fa-heart fa-2x"></i>
+                </span>
+              </footer>
+            </a>
+            <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+            <!-- `<input>` and `<label>` MUST NOT appear as descendant of `<a>` -->
+            <label class="restaurant__like__label action" for="restaurant__like-r1">
+              <i class="icon action-like fa-fw fa-regular fa-heart fa-2x"></i>
+            </label>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <h2>restaurant page Components</h2>
+    <!--\\\\\\\\\\ RESTAURANT TITLE //////////-->
+    <header id="r1_title" class="restaurant">
+      <input class="restaurant__like__input action__input" id="restaurant__like-r1_title"
+        name="restaurant__like-r1_title" type="checkbox" style="display: revert;">
+      <div class="action-has action-flex">
+        <h1 class="restaurant__name __title __title-block __font-title">La palette du goût</h1>
+        <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+        <label class="restaurant__like__label action__label action" for="restaurant__like-r1_title">
+          <i class="icon action-like fa-fw fa-regular fa-heart fa-2x"></i>
+        </label>
+      </div>
+    </header>
+
+    <!--\\\\\\\\\\ COURSES //////////-->
+    <div id="courses" style="margin-bottom: 2em;">
+
+      <!--\\\\\\\\\\ STARTERS //////////-->
+      <section class="courses__section starters">
+        <ul class="courses__list __list">
+
+          <!-- COURSE #r1-sc1__opened -->
+          <li id="r1-sc1__opened" class="course">
+            <h2>DRAWER OPENED (input checked) - DEFAULT</h2>
+            <input class="course__add__input action__input" id="course__add-r1-sc1__opened"
+              name="course__add-r1-sc1__opened" type="checkbox" checked style="display: revert;">
+            <article class="course__card __box-shadow_hover action-has action-flex drawer-has">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Fricassée d'escargots -- 5x blah blah
+                    blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Au piment d'Espelette -- 5x
+                    blah blah blah
+                    blah blah</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r1-sc1__opened">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r1-sc1__closed -->
+          <li id="r1-sc1__closed" class="course">
+            <h2>DRAWER CLOSED (input unchecked)</h2>
+            <input class="course__add__input action__input" id="course__add-r1-sc1__closed"
+              name="course__add-r1-sc1__closed" type="checkbox" style="display: revert;">
+            <article class="course__card __box-shadow_hover action-has action-flex drawer-has">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Fricassée d'escargots -- 5x blah blah
+                    blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Au piment d'Espelette -- 5x
+                    blah blah blah
+                    blah blah</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r1-sc1__closed">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r1-sc1__hover -->
+          <li id="r1-sc1__hover" class="course">
+            <h2>DRAWER HOVER - CLOSE by default (input unchecked) - OPEN on hover & input checked</h2>
+            <input class="course__add__input action__input" id="course__add-r1-sc1__hover"
+              name="course__add-r1-sc1__hover" type="checkbox" style="display: revert;">
+            <article class="course__card __box-shadow_hover action-has action-flex drawer-has drawer-hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Fricassée d'escargots -- 5x blah blah
+                    blah blah blah</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Au piment d'Espelette -- 5x
+                    blah blah blah
+                    blah blah</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r1-sc1__hover">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a96b215154.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Restaurant: Le délice des sens | ohmyfood</title>
+
+  <!-- layout -->
+  <link rel="stylesheet" href="../../css/_layout.css">
+  <link rel="stylesheet" href="../../css/restaurant-layout.css">
+  <!-- style -->
+  <link rel="stylesheet" href="../../css/_style.css">
+  <link rel="stylesheet" href="../../css/restaurant-style.css">
+</head>
+
+<body>
+  <!--\\\\\\\\\\ HEADER //////////-->
+  <header id="header" class="__box-shadow">
+    <div id="header__container" class="container __flex-center __lh_0">
+      <!--\\\\\\\\\\ HEADER LINK //////////-->
+      <a id="header__link" class="__link" href="/" title="Retour à l'Accueil"><i
+          class="icon fa-fw fa-solid fa-arrow-left fa-2x"></i></a>
+
+      <!--\\\\\\\\\\ LOGO //////////-->
+      <!-- logo as img  -->
+      <img id="header__logo-img" class="logo-img __width_100p" height="32" data-height="2rem" alt="ohmyfood"
+        src="../../assets/logo-configurable.svg">
+    </div>
+  </header>
+
+
+  <!--\\\\\\\\\\ RESTAURANT IMAGE //////////-->
+  <div id="image" class="container">
+    <img id="restaurant__image" class="__width_100p" height="256" data-height="16rem" alt="Le délice des sens"
+      src="./image.jpg">
+  </div>
+
+
+  <!--\\\\\\\\\\ MAIN //////////-->
+  <main id="main" class="container">
+
+
+    <!--\\\\\\\\\\ RESTAURANT TITLE //////////-->
+    <header id="r4" class="restaurant">
+      <input class="restaurant__like__input action__input" id="restaurant__like-r4" name="restaurant__like-r4"
+        type="checkbox">
+      <div class="action-has action-flex">
+        <h1 class="restaurant__name __title __title-block __font-title">Le délice des sens</h1>
+        <!--\\\\\\\\\\ RESTAURANT LIKE //////////-->
+        <label class="restaurant__like__label action__label action" for="restaurant__like-r4">
+          <i class="icon action-like fa-fw fa-regular fa-heart fa-2x"></i>
+        </label>
+      </div>
+    </header>
+
+
+    <!--\\\\\\\\\\ COURSES //////////-->
+    <div id="courses">
+
+      <!--\\\\\\\\\\ STARTERS //////////-->
+      <section class="courses__section starters">
+        <h2 class="courses__title __title-block __font-lighter">Entrées</h2>
+        <ul class="courses__list __list">
+
+          <!-- COURSE #r4-sc1 -->
+          <li id="r4-sc1" class="course __slide-top i1">
+            <input class="course__add__input action__input" id="course__add-r4-sc1" name="course__add-r4-sc1"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Tartare de thon</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Assaisonné au yuzu</h4>
+                </div>
+                <div class="course__price"><b>25€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-sc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-sc2 -->
+          <li id="r4-sc2" class="course __slide-top i2">
+            <input class="course__add__input action__input" id="course__add-r4-sc2" name="course__add-r4-sc2"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Bouchée de homard croustillant</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Et sa farandole de petits
+                    légumes</h4>
+                </div>
+                <div class="course__price"><b>35€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-sc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-sc3 -->
+          <li id="r4-sc3" class="course __slide-top i3">
+            <input class="course__add__input action__input" id="course__add-r4-sc3" name="course__add-r4-sc3"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Velouté de cèpes</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Aux truffes</h4>
+                </div>
+                <div class="course__price"><b>20€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-sc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+
+
+      <!--\\\\\\\\\\ MAIN COURSES //////////-->
+      <section class="courses__section main-courses">
+        <h2 class="courses__title __title-block __font-lighter">Plats</h2>
+        <ul class="courses__list __list">
+
+          <!-- COURSE #r4-mc1 -->
+          <li id="r4-mc1" class="course __slide-top i4">
+            <input class="course__add__input action__input" id="course__add-r4-mc1" name="course__add-r4-mc1"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Poulet rôti aux herbes de Provence</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Et sa crème de truffe</h4>
+                </div>
+                <div class="course__price"><b>40€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-mc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-mc2 -->
+          <li id="r4-mc2" class="course __slide-top i5">
+            <input class="course__add__input action__input" id="course__add-r4-mc2" name="course__add-r4-mc2"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Langouste rôtie</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Et ses légumes de saison
+                  </h4>
+                </div>
+                <div class="course__price"><b>35€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-mc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-mc3 -->
+          <li id="r4-mc3" class="course __slide-top i6">
+            <input class="course__add__input action__input" id="course__add-r4-mc3" name="course__add-r4-mc3"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Côte de bœuf Angus</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Et sa purée de panais</h4>
+                </div>
+                <div class="course__price"><b>44€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-mc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+
+
+      <!--\\\\\\\\\\ DESSERTS //////////-->
+      <section class="courses__section desserts">
+        <h2 class="courses__title __title-block __font-lighter">Desserts</h2>
+        <ul class="courses__list __list">
+
+          <!-- COURSE #r4-dc1 -->
+          <li id="r4-dc1" class="course __slide-top i7">
+            <input class="course__add__input action__input" id="course__add-r4-dc1" name="course__add-r4-dc1"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Farandole de desserts</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Du chef</h4>
+                </div>
+                <div class="course__price"><b>18€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-dc1">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-dc2 -->
+          <li id="r4-dc2" class="course __slide-top i8">
+            <input class="course__add__input action__input" id="course__add-r4-dc2" name="course__add-r4-dc2"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Crème brûlée</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">Revisitée</h4>
+                </div>
+                <div class="course__price"><b>22€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-dc2">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+          <!-- COURSE #r4-dc3 -->
+          <li id="r4-dc3" class="course __slide-top i9">
+            <input class="course__add__input action__input" id="course__add-r4-dc3" name="course__add-r4-dc3"
+              type="checkbox">
+            <article class="course__card action-has action-flex drawer-has drawer-hover __box-shadow_hover">
+              <div class="course__desc">
+                <div class="course__name __text-overflow-has">
+                  <h3 class="course__name-title __title-block __text-overflow">Tiramisu</h3>
+                  <h4 class="course__name-more __title-block __font-lighter __text-overflow">À la noisette</h4>
+                </div>
+                <div class="course__price"><b>23€</b></div>
+              </div>
+              <!--\\\\\\\\\\ COURSE ADD //////////-->
+              <label class="course__add__label action action-check drawer" for="course__add-r4-dc3">
+                <i class="icon fa-fw fa-regular fa-circle-check"></i>
+              </label>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+    </div>
+
+
+    <!--\\\\\\\\\\ ORDER //////////-->
+    <div id="order" class="__text-center">
+      <a class="__link __button" href="#" title="Commander">Commander</a>
+    </div>
+  </main>
+
+
+  <!--\\\\\\\\\\ FOOTER //////////-->
+  <footer id="footer">
+    <div class="container">
+      <h4 class="logo-text __title __font-title">ohmyfood</h4>
+      <nav>
+        <ul class="__list">
+          <li><a class="__link" href="#"><i class="icon fa-fw fa-solid fa-utensils"></i>Proposer un
+              restaurant</a></li>
+          <li><a class="__link" href="#"><i class="icon fa-fw fa-solid fa-handshake"></i>Devenir
+              partenaire</a></li>
+          <li><a class="__link" href="#">Mentions légales</a></li>
+          <li><a class="__link" href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a96b215154.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

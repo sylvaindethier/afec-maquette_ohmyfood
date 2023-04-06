@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
+/********** FONT SIZE STRETCH **********/
+.font-size_stretch__100vw,
+.font-size_stretch__vw {
+  /* default width */
+  --width__vw: 100vw;
+
+  /* apply width - not mandatory; MAGIC NUMBER do the stuff (approx) */
+  display: inline-flex;
+  width: var(--width__vw, 100vw);
+}
+
+.text__ohmyfood {
+  font-family: "Shrikhand", cursive !important;
+  /* aspect-ratio conform to SVG viewBox */
+  aspect-ratio: 196/34 !important;
+  min-height: 100%;
+}
+
+.text__ohmyfood.font-size_stretch__100vw {
+  width: 100vw;
+
+  /* apply font-size */
+  font-size: var(--font-size__100vw) !important;
+
+  /* OK, but font is italic and last letter overflow */
+  --font-size__100vw: 18.563vw;
+
+  /*** MAGIC NUMBER ***/
+  /* --font-size__100vw: 0vw;
+  --space-right__100vw: 0.1vw;
+  --font-size__100vw: 5vw;
+  --space-right__100vw: 0.4vw;
+  --font-size__100vw: 10vw;
+  --space-right__100vw: 0.7vw;
+  --font-size__100vw: 15vw;
+  --space-right__100vw: 1vw; */
+  /***  space-right linear function: f(x) = a*x + b, fix italic last letter overflow-x ***/
+  --space-right__100vw: calc((var(--space-right_grad__100vw) * var(--font-size__100vw)) + var(--space-right_const__100vw));
+  padding-right: var(--space-right__100vw) !important;
+  /*** MAGIC NUMBER ***/
+  line-height: 0.946 !important;
+  --space-right_grad__100vw: 0.06;
+  --space-right_const__100vw: 0.1vw;
+
+  /*** MAGIC NUMBER ***/
+  /* --font-size__100vw: 0vw;
+  --space-bottom__100vw: 0.15vw;
+  --font-size__100vw: 5vw;
+  --space-bottom__100vw: 0.3vw;
+  --font-size__100vw: 10vw;
+  --space-bottom__100vw: 0.45vw;
+  --font-size__100vw: 15vw;
+  --space-bottom__100vw: 0.6vw; */
+  /*** space-bottom linear function: f(x) a*x + b, fix under baseline letter overflow-y ***/
+  --space-bottom__100vw: calc((var(--space-bottom_grad__100vw) * var(--font-size__100vw)) + var(--space-bottom_const__100vw));
+  padding-bottom: var(--space-bottom__100vw) !important;
+  /*** MAGIC NUMBER ***/
+  line-height: 0.907 !important;
+  --space-bottom_grad__100vw: 0.03;
+  --space-bottom_const__100vw: 0.15vw;
+
+  /* OK for 320px to 1920px if container is 100vw (no margin and padding) */
+  --font-size__100vw: 18.34vw;
+}
+
+.text__ohmyfood.font-size_stretch__vw {
+  /* apply font-size */
+  font-size: var(--font-size__vw) !important;
+
+  /*** MAGIC NUMBER ***/
+  --font-size_grad: 0.1834;
+  --font-size__vw: calc(var(--width__vw) * var(--font-size_grad));
+
+  /***  space-right linear function: f(x) = a*x + b, fix italic last letter overflow-x ***/
+  --space-right: calc((var(--space-right_grad) * var(--font-size__vw)) + var(--space-right_const));
+  padding-right: var(--space-right);
+  /*** MAGIC NUMBER ***/
+  line-height: 0.946;
+  --space-right_grad: 0.06;
+  --space-right_const: 0.1vw;
+
+  /*** space-bottom linear function: f(x) a*x + b, fix under baseline letter overflow-y ***/
+  --space-bottom: calc((var(--space-bottom_grad) * var(--font-size__vw)) + var(--space-bottom_const));
+  padding-bottom: var(--space-bottom);
+  /*** MAGIC NUMBER ***/
+  line-height: 0.907;
+  --space-bottom_grad: 0.03;
+  --space-bottom_const: 0.15vw;
+}
