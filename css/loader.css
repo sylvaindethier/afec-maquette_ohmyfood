@@ -289,49 +289,11 @@ body {
   color: transparent;
   background-size: 0%;
 
-  animation: bg-progress var(--show_duration) both;
+  animation: bg-progress var(--show_duration) linear both;
 }
 
 @keyframes bg-progress {
-  0% {
-    background-size: 0%;
-  }
-
-  20% {
-    background-size: 10%;
-  }
-
-  25%,
-  35% {
-    background-size: 30%;
-  }
-
-  43% {
-    background-size: 41%;
-  }
-
-  56% {
-    background-size: 50%;
-  }
-
-  66% {
-    background-size: 52%;
-  }
-
-  71% {
-    background-size: 60%;
-  }
-
-  75% {
-    background-size: 76%;
-
-  }
-
-  94% {
-    background-size: 86%;
-  }
-
-  100% {
+  to {
     background-size: 100%;
   }
 }
